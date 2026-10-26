@@ -49,6 +49,7 @@ Repo ini mengunci urutan kerja dan bukti yang membuat klaim itu tidak mungkin lo
 | `docs/07-pr-and-review.md` | Dual PR, loop review, verifikasi temuan |
 | `docs/08-ci-gates.md` | Gate yang memblokir PR dan cara menjalankannya lokal |
 | `docs/09-kartographer-mcp.md` | MCP index codebase INP: route, call chain, validation rules, DTO, tabel |
+| `docs/10-worktree.md` | Kerja paralel per task/branch tanpa mengganggu checkout utama |
 | `workflow/00-ledger-intake.md` | Fase 0 — baca TC dari ledger, cek spec yang sudah ada |
 | `workflow/01-grounding.md` | Fase 1 — telusuri codebase + app, cocokkan dengan TC |
 | `workflow/02-scenario-design.md` | Fase 2 — desain skenario, tunggu approval |
