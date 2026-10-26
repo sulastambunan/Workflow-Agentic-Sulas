@@ -36,6 +36,7 @@ SECRET_PATTERNS = [
     (re.compile(r"\bsk-[A-Za-z0-9_-]{20,}"), "hardcoded API key"),
 ]
 FOCUSED = re.compile(r"\b(test|describe|it)\s*\.\s*(only|skip)\b")
+DECL = re.compile(r"^\s*(it|test)(\.(only|skip))?\(\s*['\"`]")
 NON_ASCII = re.compile(r"[^\x00-\x7F]")
 
 
@@ -63,6 +64,24 @@ def check_file(path):
     covers = [ln for ln in lines if "@covers" in ln or "@no-covers" in ln]
     if not covers:
         problems.append("missing // @covers <TC-ID> (or // @no-covers <reason>)")
+
+    # every test declaration must carry a cover tag directly above it
+    for idx, ln in enumerate(lines):
+        if not DECL.match(ln):
+            continue
+        tagged = False
+        for back in range(idx - 1, max(-1, idx - 7), -1):
+            prev = lines[back].strip()
+            if not prev:
+                continue
+            if "@covers" in prev or "@no-covers" in prev:
+                tagged = True
+                break
+            if prev.startswith("//") or prev.startswith("*") or prev.startswith("/*"):
+                continue
+            break
+        if not tagged:
+            problems.append(f"line {idx + 1}: test has no @covers/@no-covers directly above it")
 
     for n, ln in enumerate(lines, 1):
         code = ln.split("//")[0]

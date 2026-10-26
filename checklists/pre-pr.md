@@ -3,6 +3,7 @@
 ## Traceability
 - [ ] Setiap test baru punya `// @covers <TC-ID>` (atau `// @no-covers <alasan>`)
 - [ ] ID benar-benar ada di ledger — bukan ID yang "kelihatan masuk akal"
+- [ ] `@covers` lengkap: semua TC yang benar-benar dieksekusi test itu tertulis
 - [ ] Satu TC = satu spec pemilik; tidak ada dua spec mengklaim ID yang sama
 - [ ] Spec baru terdaftar di runner/catalog repo (kalau repo memakainya)
 
@@ -17,6 +18,8 @@
 - [ ] Bisa gagal kalau perilaku berubah (bukan `toBeDefined()` saja)
 - [ ] Tidak ada fallback `||` yang selalu true
 - [ ] Tidak ada status set yang ditoleransi (`[200,401,404].toContain(...)`)
+- [ ] Tiap klaim Then/And di TC punya checkpoint yang bisa gagal sendiri
+- [ ] Tidak ada perbedaan app vs TC yang diserap diam-diam — sudah diangkat ke user
 - [ ] Assertion lama tidak dihapus saat menyelaraskan — yang baru ditambahkan
 
 ## Hygiene

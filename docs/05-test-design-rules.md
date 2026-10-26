@@ -72,6 +72,23 @@ test('Create review → detail → edit shows saved values', async () => {
 - Never leave a skipped test claiming coverage. A red `test.fail()` proving a real product bug is
   a green script, not a conforming feature — say that out loud.
 
+## Assertion fidelity to the ledger
+
+Assertion bukan "yang penting ada expect". Setiap assertion harus bisa ditelusuri ke satu baris
+`## Expected Results` di TC.
+
+- Satu klaim Then/And = satu checkpoint yang bisa gagal sendiri.
+- Jangan memparafrase klaim menjadi assertion yang lebih longgar (mis. TC minta teks error persis,
+  test hanya mengecek status 200).
+- Jangan meng-assert nilai yang ditulis oleh test itu sendiri (data buatan test bukan bukti app).
+- Klaim yang tidak bisa dibuktikan harness → jangan dihapus diam-diam: pindahkan TC ke `partial`
+  dan sebutkan di `## Notes / Gaps`.
+- Test yang meng-cover beberapa TC: tulis semua ID di `@covers` (boleh berurutan), dan pastikan
+  tiap TC punya minimal satu checkpoint yang mewakilinya.
+
+Kalau app berperilaku beda dari TC, berhenti dan angkat ke manusia (lihat `docs/02-ledger-contract.md`,
+bagian "Kalau implementasi dev berbeda dari TC") — jangan menyesuaikan assertion sendiri.
+
 ## Before writing assertions
 
 Probe the app first. A doc rule like "Title > 50 rejected" may be an HTML `maxlength` (the bad

@@ -12,9 +12,12 @@
    - struktur payload/response
 3. Kalau perlu, probe app live: login → buka halaman → dump elemen + XHR.
    Submit form kosong untuk membaca daftar field wajib dari body 422.
-4. Cocokkan hasilnya dengan TC:
+4. Cocokkan hasilnya dengan TC, klaim per klaim (Given/When/Then):
    - sama → lanjut
-   - app berbeda → catat sebagai keputusan manusia (app benar → koreksi TC; TC benar → bug)
+   - **berbeda → berhenti.** Jangan menyesuaikan assertion, jangan mengubah TC sendiri.
+     Kumpulkan bukti (AC yang dikutip, langkah, hasil aktual, status HTTP/teks/screenshot,
+     record id) lalu tanya manusia dengan dua pilihan:
+     (a) TC diperbaiki di `staffinc-testcase`, atau (b) dikategorikan defect produk.
 5. Cek reuse: sudah ada step/usecase/page untuk perilaku ini?
 
 ## Output
@@ -25,14 +28,15 @@ SOURCE: <file:baris di codebase> (untuk tiap klaim penting)
 COPY TO ASSERT: <teks tombol/error yang dipakai>
 VALIDATION: <field + aturan + trigger: inline | on-submit>
 REUSE: <helper/usecase yang sudah ada atau "none">
-MISMATCH: <TC vs app, kalau ada>
+MISMATCH: <TC vs app, klaim mana yang beda, bukti> — atau "none"
+DECISION NEEDED: <perbaiki TC di staffinc-testcase | defect produk> (kalau ada mismatch)
 PROBE: <perintah/script yang dipakai> atau "tidak perlu"
 ```
 
 ## Exit criteria
 
 - Setiap selector/assertion punya sumber (kode, atribut, atau UI live) — bukan tebakan.
-- Perbedaan TC vs app sudah diangkat, tidak diputuskan sendiri.
+- Perbedaan TC vs app sudah diangkat **dengan bukti**, tidak diputuskan sendiri.
 - Tidak ada halaman yang di-assert padahal tidak bisa dibuka (5xx/permission).
 
 ## Prompt

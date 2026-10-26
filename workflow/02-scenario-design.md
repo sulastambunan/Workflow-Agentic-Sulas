@@ -23,6 +23,7 @@ SPEC FILE: <path>
 2. <judul> [NEG] — precondition: <state> — assert: <error copy / status>
 JOURNEY: <test yang menggabungkan beberapa TC + test.step per TC>
 DATA: <varian factory yang dibutuhkan>
+TRACEABILITY: <TC-ID → klaim Then/And → checkpoint di test>
 NOT MERGED: <pasangan yang sengaja dipisah + alasannya>
 ```
 

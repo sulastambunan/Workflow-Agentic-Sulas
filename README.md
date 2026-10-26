@@ -75,9 +75,13 @@ Berhenti setelah fase 0 dan tunjukkan outputnya.
 5. **Status mengikuti bukti.** `automated` hanya setelah spec benar-benar jalan dan PR-nya merged.
 6. **Dual PR.** Automation + ledger, saling menunjuk; flip status baru setelah automation merged.
 7. **Tidak ada klaim tanpa run.** Bukti menyertai klaim, dan yang belum dijalankan disebut.
+8. **GWT adalah kontrak.** Precondition, langkah, dan assertion mengikuti Given/When/Then di ledger — tiap klaim Then punya checkpoint yang bisa gagal sendiri.
+9. **`@covers` lengkap.** Semua TC yang benar-benar dieksekusi test ditulis; tidak ada ID karangan atau ID hilang.
+10. **Beda app vs TC = keputusan manusia.** Berhenti, bawa bukti, tanya: perbaiki TC di `staffinc-testcase` atau catat sebagai defect. Jangan menyesuaikan assertion supaya hijau.
 
 ## Sudah diuji
 
-`scripts/check_agent_rules.py` dites dengan dua fixture: spec bersih → PASS, spec bermasalah →
+`scripts/check_agent_rules.py` dites dengan tiga fixture: spec bersih → PASS; spec bermasalah →
 FAIL dengan 6 temuan (`@covers` hilang, `test.only`, `console.log`, JWT hardcoded, assertion lemah,
-karakter non-ASCII).
+karakter non-ASCII); spec dengan 2 test yang hanya satu ber-`@covers` → FAIL di test kedua
+(tag dicek per deklarasi test, bukan per file).

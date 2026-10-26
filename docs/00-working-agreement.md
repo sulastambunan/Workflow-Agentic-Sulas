@@ -36,6 +36,9 @@ FACTORY is not a layer. It may be imported by SPEC (fixtures) and by USECASE
 - [ ] Scenario written in the spec file the human named (one TC = one owning spec)
 - [ ] Every test carries `// @covers <TC-ID>` (or `// @no-covers <reason>` for seeding-only)
 - [ ] Assertions fail when the behaviour regresses — no `toBeDefined()`-only, no `||` fallbacks
+- [ ] Every Then/And claim in the ledger has an assertion (or the TC is `partial` with a note)
+- [ ] `@covers` lists every TC the test really executes — no missing, no invented IDs
+- [ ] App-vs-TC differences were raised to the human (fix TC or log defect), not silently absorbed
 - [ ] The relevant test was actually executed; verdict quoted from real output
 - [ ] Evidence exists if the human asked for it (video/artifact named after the TC)
 - [ ] `scripts/check_agent_rules.py` passes on the changed files
