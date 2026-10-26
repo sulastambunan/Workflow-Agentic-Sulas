@@ -1,0 +1,81 @@
+name: quality-gate
+
+on:
+  pull_request:
+    branches: [develop, main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  spec-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Check changed specs (@covers, no focused tests, no stubs, no secrets)
+        run: |
+          python3 scripts/check_agent_rules.py --base "origin/${{ github.base_ref }}"
+
+      - name: Type-check (if the repo defines it)
+        run: |
+          if [ -f package.json ] && grep -q '"type-check"' package.json; then
+            npm run type-check
+          elif [ -f package.json ] && grep -q '"check-all"' package.json; then
+            npm run check-all
+          else
+            echo "No type-check script in package.json — skipped"
+          fi
+
+  test:
+    needs: spec-gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    if: ${{ vars.RUN_TESTS == 'true' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: |
+          if [ -f bun.lockb ] || [ -f bun.lock ]; then bun install; else npm ci; fi
+
+      - name: Write .env from repository secrets
+        run: |
+          if [ -n "${{ secrets.ENV_FILE }}" ]; then
+            printf '%s\n' "${{ secrets.ENV_FILE }}" > .env
+          else
+            echo "ENV_FILE secret not set — skipping .env creation"
+          fi
+
+      - name: Run suite
+        run: |
+          if [ -f bun.lockb ] || [ -f bun.lock ]; then
+            bun run test:api || true
+          else
+            npm run test:api || true
+          fi
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: |
+            test-results/
+            html-report/
+          retention-days: 7
+          if-no-files-found: ignore
