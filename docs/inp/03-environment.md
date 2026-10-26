@@ -11,8 +11,8 @@
 | `utilityapp` | app PHP — layar, field | `develop` |
 | `kartographer-mcp` | index codebase (tooling) | `main` |
 
-Lokasi di workspace ini: `repos/inp/*`, ledger di `repos/shared/staffinc-testcase`,
-MCP di `repos/tooling/kartographer-mcp`.
+Lokasi di workspace ini: `repos/automation-code/*` (ledger + dua repo automation),
+codebase INP di `repos/inp/*`, MCP di `repos/tooling/kartographer-mcp`.
 
 ## Perintah
 

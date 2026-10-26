@@ -10,8 +10,8 @@ statusnya `planned`. Baca semua precondition yang dirujuk — di situ biasanya a
 dan jalur navigasi.
 
 ```
-repos/shared/staffinc-testcase/testcases/{web,mobile}/<module>/<TC-ID>.md
-repos/shared/staffinc-testcase/preconditions/*.md
+repos/automation-code/staffinc-testcase/testcases/{web,mobile}/<module>/<TC-ID>.md
+repos/automation-code/staffinc-testcase/preconditions/*.md
 ```
 
 ## 2. FETCH — module code map (sekali per modul)

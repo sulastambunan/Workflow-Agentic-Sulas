@@ -27,13 +27,13 @@ Ledger-nya sama (`staffinc-testcase`), jadi aturan `@covers`, GWT, dan status TC
 ## Workspace lengkap (submodule)
 
 Repo ini membawa semua repo yang dipakai automation sebagai submodule di `repos/`,
-dipisah per track:
+dikelompokkan menurut perannya:
 
 ```
-repos/staffinc/   automation · codebase Staffinc · skills
-repos/inp/        automation · codebase INP
-repos/shared/     staffinc-testcase (ledger dua track)
-repos/tooling/    kartographer-mcp
+repos/automation-code/   staffinc-testcase · staffinc-automation · internaltools-automation
+repos/staffinc/          codebase Staffinc · skills
+repos/inp/               codebase INP
+repos/tooling/           kartographer-mcp
 ```
 
 ```bash

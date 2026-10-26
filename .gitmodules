@@ -1,11 +1,11 @@
 [submodule "repos/staffinc-testcase"]
-	path = repos/shared/staffinc-testcase
+	path = repos/automation-code/staffinc-testcase
 	url = https://github.com/sampingantech/staffinc-testcase.git
 [submodule "repos/staffinc-automation"]
-	path = repos/staffinc/staffinc-automation
+	path = repos/automation-code/staffinc-automation
 	url = https://github.com/sampingantech/staffinc-automation.git
 [submodule "repos/internaltools-automation"]
-	path = repos/inp/internaltools-automation
+	path = repos/automation-code/internaltools-automation
 	url = https://github.com/sampingantech/internaltools-automation.git
 [submodule "repos/hcmsvc"]
 	path = repos/staffinc/hcmsvc

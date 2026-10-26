@@ -6,8 +6,8 @@ dan perintah run.
 ## 1. READ — TC + preconditions
 
 ```
-repos/shared/staffinc-testcase/testcases/web/<module>/<TC-ID>.md
-repos/shared/staffinc-testcase/preconditions/*.md
+repos/automation-code/staffinc-testcase/testcases/web/<module>/<TC-ID>.md
+repos/automation-code/staffinc-testcase/preconditions/*.md
 ```
 
 Catat `automationStatus`, `sourceRefs`, dan modul. Pastikan masih `planned`.
