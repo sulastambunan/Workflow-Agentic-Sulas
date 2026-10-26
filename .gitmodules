@@ -1,0 +1,45 @@
+[submodule "repos/staffinc-testcase"]
+	path = repos/staffinc-testcase
+	url = https://github.com/sampingantech/staffinc-testcase.git
+[submodule "repos/staffinc-automation"]
+	path = repos/staffinc-automation
+	url = https://github.com/sampingantech/staffinc-automation.git
+[submodule "repos/internaltools-automation"]
+	path = repos/internaltools-automation
+	url = https://github.com/sampingantech/internaltools-automation.git
+[submodule "repos/hcmsvc"]
+	path = repos/hcmsvc
+	url = https://github.com/sampingantech/hcmsvc.git
+[submodule "repos/hcmworker"]
+	path = repos/hcmworker
+	url = https://github.com/sampingantech/hcmworker.git
+[submodule "repos/kerjaan-client-portal"]
+	path = repos/kerjaan-client-portal
+	url = https://github.com/sampingantech/kerjaan-client-portal.git
+[submodule "repos/kerjaan-android"]
+	path = repos/kerjaan-android
+	url = https://github.com/sampingantech/kerjaan-android.git
+[submodule "repos/ios-kerjaan"]
+	path = repos/ios-kerjaan
+	url = https://github.com/sampingantech/ios-kerjaan.git
+[submodule "repos/seamless-admin-portal"]
+	path = repos/seamless-admin-portal
+	url = https://github.com/sampingantech/seamless-admin-portal.git
+[submodule "repos/utilitysvc"]
+	path = repos/utilitysvc
+	url = https://github.com/sampingantech/utilitysvc.git
+[submodule "repos/utility-portal"]
+	path = repos/utility-portal
+	url = https://github.com/sampingantech/utility-portal.git
+[submodule "repos/kerjaan-sdd"]
+	path = repos/kerjaan-sdd
+	url = https://github.com/sampingantech/kerjaan-sdd.git
+[submodule "repos/utilityapp"]
+	path = repos/utilityapp
+	url = https://github.com/sampingantech/utilityapp.git
+[submodule "repos/kartographer-mcp"]
+	path = repos/kartographer-mcp
+	url = https://github.com/rotaigalp/kartographer-mcp.git
+[submodule "repos/skills"]
+	path = repos/skills
+	url = https://github.com/sampingantech/skills.git

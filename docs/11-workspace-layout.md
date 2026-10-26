@@ -39,6 +39,36 @@ Repo yang relevan untuk automation biasanya jatuh ke salah satu peran di tabel: 
 codebase track Staffinc, codebase track INP, atau tooling. Kalau ragu apakah sebuah repo dipakai,
 cek dulu apakah `automationRef` di ledger menunjuk ke sana sebelum menambahkannya ke workspace.
 
+## Repo ini membawa submodule
+
+Semua repo di tabel di atas terpasang sebagai submodule di `repos/`, jadi satu clone repo ini
+= satu workspace lengkap:
+
+```
+repos/
+  staffinc-testcase/  staffinc-automation/  internaltools-automation/
+  hcmsvc/  hcmworker/  kerjaan-client-portal/  kerjaan-android/  ios-kerjaan/
+  seamless-admin-portal/  kerjaan-sdd/
+  utilitysvc/  utility-portal/  utilityapp/
+  kartographer-mcp/  skills/
+```
+
+```bash
+git clone --recurse-submodules https://github.com/sulastambunan/Workflow-Agentic-Sulas.git
+# atau kalau sudah clone:
+git submodule update --init --recursive
+git submodule status                    # commit yang di-pin per repo
+```
+
+Catatan:
+
+- Submodule **dipin ke satu commit**, bukan mengikuti branch. Untuk menyegarkan:
+  `git submodule update --remote --merge`.
+- Worktree dari repo ini **tidak otomatis** mengisi submodule — jalankan
+  `git submodule update --init --recursive` di worktree tersebut.
+- Codebase hanya dibaca untuk grounding; perubahan kode produk tidak dilakukan dari submodule ini.
+  Kalau perlu branch kerja, buat worktree dari repo aslinya (lihat bagian di atas).
+
 ## Layout yang dipakai
 
 ```

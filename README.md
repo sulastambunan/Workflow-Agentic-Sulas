@@ -24,6 +24,19 @@ bukan sekadar aturan menulis test.
 
 Ledger-nya sama (`staffinc-testcase`), jadi aturan `@covers`, GWT, dan status TC berlaku untuk keduanya.
 
+## Workspace lengkap (submodule)
+
+Repo ini membawa semua repo yang dipakai automation sebagai submodule di `repos/`
+(ledger, dua repo automation, codebase Staffinc & INP, `kartographer-mcp`, `skills`).
+
+```bash
+git clone --recurse-submodules <repo-url>
+# atau di clone yang sudah ada:
+git submodule update --init --recursive
+```
+
+Daftar lengkap + peran tiap repo: `docs/11-workspace-layout.md`.
+
 ## Kenapa repo ini ada
 
 Kegagalan yang paling mahal di automation kita bukan test merah, tapi **klaim yang tidak sinkron**:
