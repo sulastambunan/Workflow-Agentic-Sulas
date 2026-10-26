@@ -65,17 +65,31 @@ Probe sebelum menulis locator, bukan sesudah test merah:
 - Kalau tidak bisa membuka halaman (5xx, permission), **berhenti menulis assertion** untuk
   halaman itu — laporkan blocker, jangan mengarang selector.
 
-## Reuse-first
+## Reuse-first (wajib)
 
-Sebelum membuat step/locator/usecase/component baru:
+Sebelum membuat file/method baru, cari dengan urutan ini:
+
+1. **PAGE / SCREEN / COMPONENT** untuk modul itu — halaman ini sudah punya page object?
+2. **Method** yang menyentuh elemen yang sama — cari `testid`, label, atau route.
+3. **USECASE** yang sudah menjalankan langkah/alur ini.
+4. **FACTORY** untuk entity/data yang sama.
+5. **Helper murni** (format tanggal, parse) di `helpers/` atau `core/utils/`.
 
 ```bash
-grep -rn "createEmployee" domain/ | head
-find domain -name '*<entity>*'
+find domain -path '*module/<module>*' \( -name '*.page.ts' -o -name '*.screen.ts' -o -name '*.component.ts' \)
+grep -rn "<testid|label|route>" domain/web/module/<module>
+grep -rn "<action>" domain/web/module/<module>/usecases
+find domain/web/module/<module>/factories -name '*<entity>*'
 ```
 
-Kalau sudah ada, pakai yang ada. Duplikasi membuat suite punya dua definisi untuk satu perilaku,
-dan yang lama akan basi tanpa ada yang sadar.
+| Temuan | Tindakan |
+|---|---|
+| method persis ada | pakai apa adanya |
+| file ada, method belum | extend file itu |
+| tidak ada sama sekali | buat baru, tulis alasannya |
+
+Termasuk duplikasi (dilarang): dua page object untuk halaman yang sama, dua usecase untuk alur yang
+sama, dua factory untuk entity yang sama, selector yang sama ditulis ulang di dua tempat.
 
 ## Aturan bukti
 

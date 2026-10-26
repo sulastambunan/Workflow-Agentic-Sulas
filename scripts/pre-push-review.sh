@@ -80,6 +80,12 @@ if [ -n "$specs" ]; then
       warn "$f: possible tautological/permissive assertion - inspect"
       printf '%s\n' "$taut_out"
     fi
+
+    layer_out="$( { grep -nE '(^|[^A-Za-z_])page\.|\.(locator|getByTestId|getByRole)\(' "$f"; grep -nE "\.(page|screen|component)['\"]" "$f"; } 2>/dev/null || true )"
+    if [ -n "$layer_out" ]; then
+      block "$f: page/screen/component or raw locator used in spec (must go through usecase)"
+      printf '%s\n' "$layer_out"
+    fi
   done <<< "$specs"
 fi
 

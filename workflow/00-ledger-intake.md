@@ -4,15 +4,20 @@
 
 ## Inputs
 
-- TC ID (atau daftar)
+- **Link TC** (biasanya) atau TC ID + module
 - Lokasi ledger (`staffinc-testcase`, branch)
 - Repo automation tujuan + branch
 - Environment (dev/stg) dan akun yang tersedia
 
 ## Steps
 
-1. Cari file TC: `testcases/<product>/<module>/<ID>-*.md`. Baca **seluruh** body — Objective,
-   Preconditions, Steps, Expected Results, Notes/Gaps.
+0. **Resolve link jadi file.** Format yang biasa:
+   `https://github.com/sampingantech/staffinc-testcase/blob/<branch>/testcases/<product>/<module>/<ID>-*.md`
+   - Ambil `<branch>` dan path-nya; kalau branch ≠ checkout lokal, baca lewat
+     `git -C repos/automation-code/staffinc-testcase show <branch>:<path>`.
+   - Cocokkan `id` di frontmatter dengan ID di nama file. Kalau beda, berhenti dan tanya.
+   - Jangan menyimpulkan isi TC dari judul link.
+1. Baca **seluruh** body — Objective, Preconditions, Steps, Expected Results, Notes/Gaps.
 2. Catat frontmatter: `id`, `automationStatus`, `automationRef` (kalau sudah ada).
 3. Cek apakah TC sudah punya spec: grep `@covers <ID>` di repo automation.
    - sudah ada → jangan bikin duplikat; tentukan apakah ini perbaikan atau TC baru
@@ -41,8 +46,9 @@ OPEN QUESTION: <kalau TC ambigu atau app berbeda>
 ## Prompt
 
 ```text
-Baca docs/shared/00-working-agreement.md, docs/shared/01-pipeline-overview.md, docs/shared/02-ledger-contract.md,
-lalu jalankan workflow/00-ledger-intake.md untuk TC <ID>.
-Ledger: <path repo/branch>. Automation repo: <path/branch>.
+Ini link TC-nya: <link staffinc-testcase>.
+Resolve link itu ke file TC (branch + path), cocokkan id di frontmatter, lalu jalankan
+workflow/00-ledger-intake.md.
+Cek juga apakah sudah ada spec yang @covers id itu.
 Jangan menulis kode. Keluarkan output fase 0 saja.
 ```
