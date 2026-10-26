@@ -55,7 +55,20 @@ salah/hilang, selector/endpoint fiktif, crash saat discovery, secret bocor, aksi
 ## Output
 
 - Chat: Bahasa Indonesia.
+- **Gaya jawaban:** singkat dan langsung ke poin; detail tetap ada tapi padat. Tanpa mengulang isi
+  file/diff, cukup `file:line` yang relevan. Satu putaran review = satu verdict.
 - Artefak review dan komentar GitHub: English.
 - Format temuan: Location / Issue / Impact / Fix / Verification.
 - Akhiri dengan verdict, jumlah blocker, perintah yang benar-benar dijalankan, dan hal yang **belum**
   diverifikasi (mis. belum ada run live).
+
+## Menjalankan gate
+
+```bash
+bash scripts/pre-push-review.sh origin/develop     # deterministik: conflict, .only, console.log,
+                                                   # secret, @covers vs ledger, tautologi
+bash scripts/install-pre-push-hook.sh /path/to/staffinc-automation   # pasang sebagai hook git
+```
+
+Script ini lantai, bukan pengganti: kecocokan GWT dan isi assertion tetap diperiksa manual
+(skill `staffinc-automation-pre-push-review`). `REQUEST_CHANGES` = jangan push.
