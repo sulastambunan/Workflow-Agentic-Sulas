@@ -5,11 +5,11 @@ Baca `docs/01` sampai `docs/08` setelah ini, lalu ikuti fase yang relevan di `wo
 
 Tiga repo yang terlibat: ledger `staffinc-testcase` (sumber TC), codebase produk (sumber
 perilaku), dan repo automation tempat test ditulis (`staffinc-automation` untuk track Staffinc,
-`internaltools-automation` untuk track INP). Lihat `docs/01-pipeline-overview.md`.
+`internaltools-automation` untuk track INP). Lihat `docs/shared/01-pipeline-overview.md`.
 
 ## Read order
 
-1. `docs/00-working-agreement.md` (this file)
+1. `docs/shared/00-working-agreement.md` (this file)
 2. The phase file you are executing under `workflow/`
 3. The matching rule doc under `docs/`
 4. The target repo's own conventions — they win on local details

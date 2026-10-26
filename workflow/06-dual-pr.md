@@ -59,7 +59,7 @@ Kalau status dinaikkan sebelum PR automation merged, check `automation-merged` g
 4. Komentar PR: mapping + bukti, pisahkan VERIFIED vs PENDING.
 5. Jangan merge PR orang lain; tunggu approving review.
 
-Detail: `docs/07-pr-and-review.md`.
+Detail: `docs/shared/07-pr-and-review.md`.
 
 ## Exit criteria
 
