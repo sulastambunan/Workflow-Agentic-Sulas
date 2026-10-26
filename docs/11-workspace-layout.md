@@ -46,12 +46,16 @@ Semua repo di tabel di atas terpasang sebagai submodule di `repos/`, jadi satu c
 
 ```
 repos/
-  staffinc-testcase/  staffinc-automation/  internaltools-automation/
-  hcmsvc/  hcmworker/  kerjaan-client-portal/  kerjaan-android/  ios-kerjaan/
-  seamless-admin-portal/  kerjaan-sdd/
-  utilitysvc/  utility-portal/  utilityapp/
-  kartographer-mcp/  skills/
+  staffinc/   staffinc-automation · hcmsvc · hcmworker · kerjaan-client-portal
+              kerjaan-android · ios-kerjaan · seamless-admin-portal · kerjaan-sdd
+  inp/        internaltools-automation · utilitysvc · utility-portal · utilityapp
+  shared/     staffinc-testcase      (ledger dipakai dua track)
+  tooling/    kartographer-mcp · skills
 ```
+
+Pemisahan ini mengikuti track: repo yang hanya dipakai track Staffinc di `staffinc/`, yang hanya
+dipakai INP di `inp/`. `staffinc-testcase` sengaja di `shared/` karena ledger-nya satu untuk dua
+track — kalau butuh checkout terpisah per track, pakai worktree dari submodule itu, bukan clone kedua.
 
 ```bash
 git clone --recurse-submodules https://github.com/sulastambunan/Workflow-Agentic-Sulas.git
