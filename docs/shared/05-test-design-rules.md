@@ -86,7 +86,7 @@ Assertion bukan "yang penting ada expect". Setiap assertion harus bisa ditelusur
 - Test yang meng-cover beberapa TC: tulis semua ID di `@covers` (boleh berurutan), dan pastikan
   tiap TC punya minimal satu checkpoint yang mewakilinya.
 
-Kalau app berperilaku beda dari TC, berhenti dan angkat ke manusia (lihat `docs/02-ledger-contract.md`,
+Kalau app berperilaku beda dari TC, berhenti dan angkat ke manusia (lihat `docs/shared/02-ledger-contract.md`,
 bagian "Kalau implementasi dev berbeda dari TC") — jangan menyesuaikan assertion sendiri.
 
 ## Before writing assertions

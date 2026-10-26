@@ -5,13 +5,13 @@
 ## Steps
 
 1. Petakan TC ke permukaan app: halaman/route, endpoint, atau screen.
-2. Telusuri codebase produk (lihat `docs/03-codebase-grounding.md`):
+2. Telusuri codebase produk (lihat `docs/shared/03-codebase-grounding.md`):
    - route + guard permission
    - label/copy yang akan di-assert
    - validasi (`required`, `maxlength`, aturan lintas-field, pesan server)
    - struktur payload/response
 3. Kalau track INP dan index Kartographer tersedia, pakai MCP-nya lebih dulu
-   (lihat `docs/09-kartographer-mcp.md`): `search_entries` → `get_trace_full` →
+   (lihat `docs/inp/kartographer-mcp.md`): `search_entries` → `get_trace_full` →
    `get_request_rules` / `get_dto_shape` / `tables_of`. Baru probe UI untuk sisa yang belum terjawab.
 4. Kalau perlu, probe app live: login → buka halaman → dump elemen + XHR.
    Submit form kosong untuk membaca daftar field wajib dari body 422.

@@ -13,6 +13,16 @@ Spec yang ditulis tanpa keduanya adalah tebakan.
 Kalau ketiganya bertentangan, **jangan pilih sendiri**: angkat ke manusia dengan bukti.
 App benar → koreksi TC/ledger. TC benar → itu bug produk (test.fail + KNOWN BUG, ledger `manual`).
 
+## Alat baca per track
+
+| Track | Alat | Catatan |
+|---|---|---|
+| Staffinc | `code_kb.py` (code-knowledge.db), `qa_kb.py` (suite.db) | butuh `/usr/bin/python3` (sqlite_vec + fastembed); detail di `docs/staffinc/01-architecture.md` |
+| INP | `kartographer-mcp` | index read-only; detail di `docs/inp/kartographer-mcp.md` |
+
+Index/KB adalah **peta**, bukan kebenaran final: kalau entry basi, `provenance` bukan `verified`,
+atau KB mengembalikan 0, buka kode atau probe app — jangan menyimpulkan dari index saja.
+
 ## Repo produk yang biasa dipakai
 
 | Repo | Dipakai untuk |
@@ -34,7 +44,7 @@ App benar → koreksi TC/ledger. TC benar → itu bug produk (test.fail + KNOWN 
 Modul automation INP ada di `internaltools-automation/domain/web/module/<module>/`
 (mis. `performance-review`). Project Playwright-nya `inp`, jadi run selalu memakai `--project=inp`.
 
-Navigasi cepat: kalau index Kartographer tersedia, pakai MCP-nya dulu (`docs/09-kartographer-mcp.md`) —
+Navigasi cepat: kalau index Kartographer tersedia, pakai MCP-nya dulu (`docs/inp/kartographer-mcp.md`) —
 `search_entries` untuk menemukan route, `get_request_rules` untuk aturan validasi, `tables_of` untuk
 tabel yang harus disiapkan. Baru buka file untuk hal yang tidak dijawab index.
 

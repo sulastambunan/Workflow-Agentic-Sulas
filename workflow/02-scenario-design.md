@@ -37,6 +37,6 @@ NOT MERGED: <pasangan yang sengaja dipisah + alasannya>
 
 ```text
 Lanjut fase 2: desain skenario untuk <TC ids> berdasarkan AC berikut: <paste AC>.
-Patuhi docs/05-test-design-rules.md. Jangan menulis kode; tunjukkan daftar skenario,
+Patuhi docs/shared/05-test-design-rules.md. Jangan menulis kode; tunjukkan daftar skenario,
 precondition per state, dan assertion per permukaan. Tunggu approval.
 ```

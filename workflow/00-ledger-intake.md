@@ -41,7 +41,7 @@ OPEN QUESTION: <kalau TC ambigu atau app berbeda>
 ## Prompt
 
 ```text
-Baca docs/00-working-agreement.md, docs/01-pipeline-overview.md, docs/02-ledger-contract.md,
+Baca docs/shared/00-working-agreement.md, docs/shared/01-pipeline-overview.md, docs/shared/02-ledger-contract.md,
 lalu jalankan workflow/00-ledger-intake.md untuk TC <ID>.
 Ledger: <path repo/branch>. Automation repo: <path/branch>.
 Jangan menulis kode. Keluarkan output fase 0 saja.

@@ -42,7 +42,7 @@ git clone --recurse-submodules <repo-url>
 git submodule update --init --recursive
 ```
 
-Daftar lengkap + peran tiap repo: `docs/11-workspace-layout.md`.
+Daftar lengkap + peran tiap repo: `docs/shared/10-workspace-layout.md`.
 
 ## Kenapa repo ini ada
 
@@ -59,28 +59,14 @@ Repo ini mengunci urutan kerja dan bukti yang membuat klaim itu tidak mungkin lo
 
 | Path | Isi |
 |---|---|
-| `docs/00-working-agreement.md` | Kontrak kerja: layer, definition of done, aturan operasi agent |
-| `docs/01-pipeline-overview.md` | **Tiga repo, siapa memiliki apa, urutan merge** |
-| `docs/02-ledger-contract.md` | Bentuk file TC, arti tiap `automationStatus`, kapan di-flip |
-| `docs/03-codebase-grounding.md` | Cara membaca codebase & app supaya selector tidak dikarang |
-| `docs/04-three-layer-architecture.md` | Batas SPEC / USECASE / PAGE-SCREEN / FACTORY + naming |
-| `docs/05-test-design-rules.md` | Menurunkan skenario: POS/NEG, journey, precondition per state |
-| `docs/06-verification-and-evidence.md` | Run nyata, artifact, format laporan bukti |
-| `docs/07-pr-and-review.md` | Dual PR, loop review, verifikasi temuan |
-| `docs/08-ci-gates.md` | Gate yang memblokir PR dan cara menjalankannya lokal |
-| `docs/09-kartographer-mcp.md` | MCP index codebase INP: route, call chain, validation rules, DTO, tabel |
-| `docs/10-worktree.md` | Kerja paralel per task/branch tanpa mengganggu checkout utama |
-| `docs/11-workspace-layout.md` | Semua repo yang terlibat + layout workspace + worktree per task |
-| `scripts/bootstrap-workspace.sh` | Cek/clone repo yang belum ada, buat worktree per task |
-| `workflow/00-ledger-intake.md` | Fase 0 — baca TC dari ledger, cek spec yang sudah ada |
-| `workflow/01-grounding.md` | Fase 1 — telusuri codebase + app, cocokkan dengan TC |
-| `workflow/02-scenario-design.md` | Fase 2 — desain skenario, tunggu approval |
-| `workflow/03-layer-mapping.md` | Fase 3 — petakan ke file & layer |
-| `workflow/04-implement.md` | Fase 4 — tulis factory → layer 3 → usecase → spec |
-| `workflow/05-verify-evidence.md` | Fase 5 — run, bukti, gate lokal |
-| `workflow/06-dual-pr.md` | Fase 6 — PR automation + PR ledger + status flip |
+| `docs/README.md` | Index dokumen: shared, staffinc, inp |
+| `docs/shared/` | Aturan lintas track: kontrak kerja, pipeline, ledger, grounding, DDD, desain test, bukti, review, CI, worktree, workspace |
+| `docs/staffinc/` | Arsitektur 7 lapis, alur 10 langkah, environment/tenant, quality gate, failure modes |
+| `docs/inp/` | Padanan untuk INP: arsitektur, alur MCP, environment, gate, failure modes, `kartographer-mcp` |
+| `workflow/` | Tujuh fase kerja, satu TC pada satu waktu |
 | `checklists/` | Pre-PR dan paket bukti |
 | `scripts/check_agent_rules.py` | Checker deterministik: `@covers`, `test.only`, stub, secret, non-ASCII |
+| `scripts/bootstrap-workspace.sh` | Cek/clone repo yang belum ada, buat worktree per task |
 | `.github/workflows/quality-gate.yml` | CI: checker + type-check di setiap PR |
 
 ## Cara pakai
@@ -89,7 +75,7 @@ Repo ini mengunci urutan kerja dan bukti yang membuat klaim itu tidak mungkin lo
 2. Mulai task dengan prompt:
 
 ```text
-Baca docs/00-working-agreement.md, docs/01-pipeline-overview.md, docs/02-ledger-contract.md.
+Baca docs/shared/00-working-agreement.md, docs/shared/01-pipeline-overview.md, docs/shared/02-ledger-contract.md.
 Jalankan workflow/00-ledger-intake.md untuk TC <ID>.
 Ledger: <path staffinc-testcase>, automation repo: <path staffinc-automation>.
 Berhenti setelah fase 0 dan tunjukkan outputnya.

@@ -95,4 +95,4 @@ cd /tmp/merge-<n> && git merge origin/<base>
 Resolve by UNION, not by picking a side: both branches usually carry something real (source-cited
 locators vs a flow proven on device). Make the switch between strategies explicit.
 
-Konvensi kerja paralel dan aturan kebersihan worktree: `docs/10-worktree.md`.
+Konvensi kerja paralel dan aturan kebersihan worktree: `docs/shared/09-worktree.md`.

@@ -136,6 +136,6 @@ dibutuhkan). Script tidak pernah menghapus atau memindahkan clone yang sudah ada
 
 - Satu repo = satu clone utama; jangan clone berkali-kali untuk tiap task — pakai worktree.
 - Satu branch hanya di satu worktree.
-- Hapus worktree dengan `git worktree remove`, bukan `rm -rf` (detail: `docs/10-worktree.md`).
+- Hapus worktree dengan `git worktree remove`, bukan `rm -rf` (detail: `docs/shared/09-worktree.md`).
 - `node_modules` dan `.env` tidak ikut ke worktree — symlink/copy sebelum run.
 - Jangan commit `node_modules`, `test-results`, `outputs/`, `.env*`.
