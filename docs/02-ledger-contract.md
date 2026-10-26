@@ -70,6 +70,11 @@ python3 scripts/cross-validate-automation.py --module <slug>
 Tanpa env di atas, cek keberadaan `automationRef.path` **di-skip** sementara output tetap
 bilang sukses — itu hijau palsu.
 
+Track INP memakai repo automation yang berbeda, jadi root-nya menunjuk
+`internaltools-automation`. Repo automation yang belum dikenal ledger harus didaftarkan lebih dulu di
+`scripts/lib/agentic-utils.ts` (`automationRepoRoot()`) dan `scripts/cross-validate-automation.py`
+(dict `REPOS`) — tanpa itu validasi hard-fail `unknown automation repo`.
+
 ## Path, bukan tebakan
 
 - Pindah/rename spec = update `automationRef.path` di wave yang sama. Path drift = blocker review.

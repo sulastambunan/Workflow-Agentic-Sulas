@@ -6,7 +6,7 @@
 
 | PR | Repo | Isi |
 |---|---|---|
-| Automation | `staffinc-automation` | spec/usecase/page + `@covers` + `test-specs.json` |
+| Automation | `staffinc-automation` (track Staffinc) atau `internaltools-automation` (track INP) | spec/usecase/page + `@covers` + registrasi spec |
 | Ledger | `staffinc-testcase` | `automationStatus` + `automationRef` untuk TC yang sama |
 
 Body PR ledger wajib menyebut PR automation-nya:

@@ -15,6 +15,22 @@ mengatur cara kerjanya:
               automation worker (agent): baca → grounding → desain → tulis → run → PR
 ```
 
+## Dua track yang berbeda
+
+| Track | Ledger | Codebase (sumber perilaku) | Automation repo |
+|---|---|---|---|
+| **Staffinc** (PK / mobile / CP) | `sampingantech/staffinc-testcase` | `hcmsvc` (API) · `hcmworker` · `kerjaan-client-portal` (web) · `kerjaan-android` · `ios-kerjaan` | `staffinc-automation` |
+| **INP / internal tools** | `sampingantech/staffinc-testcase` (modul `performance-review`, dll) | `utilitysvc` (Python API) · `utility-portal` (PHP web) · `utilityapp` (PHP app) | `internaltools-automation` |
+
+Perbedaan yang mempengaruhi perintah:
+
+- `staffinc-automation`: `bun run test:web` / `test:api`, mobile lewat `bun mobile run --platform=android`.
+- `internaltools-automation`: `bun run test:web:inp` (Playwright project `inp`), gate `bun run check-all`,
+  env `bun run env:dev|stg`, modul di `domain/web/module/<module>/` (mis. `performance-review`).
+  Project lain (`partner-*`) jangan ikut jalan — selalu pilih `--project`.
+
+Keduanya memakai ledger yang sama, jadi aturan `@covers` dan status TC di `docs/02` berlaku identik.
+
 ## Siapa memiliki apa
 
 | Repo | Isi | Yang berubah saat kita automate |

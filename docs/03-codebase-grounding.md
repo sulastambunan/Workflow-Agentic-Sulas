@@ -23,6 +23,17 @@ App benar → koreksi TC/ledger. TC benar → itu bug produk (test.fail + KNOWN 
 | `kerjaan-android` | mobile Android: screen, widget, accessibility id |
 | `ios-kerjaan` | mobile iOS: native field, accessibility identifier |
 
+### Track INP / internal tools
+
+| Repo | Dipakai untuk |
+|---|---|
+| `utilitysvc` | API Python: endpoint, payload, aturan validasi, status |
+| `utility-portal` | web PHP (Laravel/Blade): halaman, tab, form, permission, copy tombol/error |
+| `utilityapp` | sisi app: layar/field yang dipakai skenario mobile — baca struktur repo sebelum menyimpulkan |
+
+Modul automation INP ada di `internaltools-automation/domain/web/module/<module>/`
+(mis. `performance-review`). Project Playwright-nya `inp`, jadi run selalu memakai `--project=inp`.
+
 ## Yang dicari di codebase
 
 - **Route/halaman** — path yang harus dibuka, guard permission.

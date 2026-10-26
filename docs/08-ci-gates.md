@@ -27,6 +27,22 @@ Add to the repo's own gates:
 npm run check-all        # or: bun run type-check && bun run lint
 ```
 
+### Per track
+
+```bash
+# Staffinc — staffinc-automation
+npm run check-all
+cd domain/web && ./node_modules/.bin/playwright test module/<module>/tests/<spec>.spec.ts
+
+# INP — internaltools-automation
+bun run check-all
+./node_modules/.bin/playwright test --config=playwright.web.config.ts --project=inp <spec>
+```
+
+Di `internaltools-automation`, `--project=inp` wajib: tanpa itu project `partner-*` ikut
+globalSetup dan mencetak kegagalan autentikasi partner yang bukan bagian dari test kamu.
+`HEADLESS=false` hanya untuk run headed — shell env menang atas `.env`.
+
 ## What CI does not prove
 
 - That the test exercises the intended scenario (a passing test can assert nothing meaningful).

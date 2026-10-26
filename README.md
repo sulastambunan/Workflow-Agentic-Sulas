@@ -15,6 +15,15 @@ bukan sekadar aturan menulis test.
                    agent: intake → grounding → desain → implement → run → dual PR
 ```
 
+## Dua track yang didukung
+
+| Track | Codebase (sumber perilaku) | Automation repo | Ciri perintah |
+|---|---|---|---|
+| **Staffinc** (PK / mobile / CP) | `hcmsvc` · `hcmworker` · `kerjaan-client-portal` · `kerjaan-android` · `ios-kerjaan` | `staffinc-automation` | `bun run test:web` / `test:api`, `bun mobile run` |
+| **INP / internal tools** | `utilitysvc` (Python API) · `utility-portal` (PHP web) · `utilityapp` (PHP app) | `internaltools-automation` | `bun run test:web:inp` (`--project=inp`), gate `bun run check-all` |
+
+Ledger-nya sama (`staffinc-testcase`), jadi aturan `@covers`, GWT, dan status TC berlaku untuk keduanya.
+
 ## Kenapa repo ini ada
 
 Kegagalan yang paling mahal di automation kita bukan test merah, tapi **klaim yang tidak sinkron**:

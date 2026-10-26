@@ -43,7 +43,8 @@ PROBE: <perintah/script yang dipakai> atau "tidak perlu"
 
 ```text
 Lanjut fase 1 (grounding) untuk TC <ID> yang sudah lolos fase 0.
-Codebase: <path kerjaan-client-portal|hcmsvc|kerjaan-android>.
+Track: <staffinc | inp>.
+Codebase: <path kerjaan-client-portal|hcmsvc|kerjaan-android | utility-portal|utilitysvc|utilityapp>.
 Telusuri route, copy, validasi, dan struktur data yang relevan; probe app kalau perlu.
 Keluarkan output fase 1 saja — jangan menulis spec dulu.
 ```
