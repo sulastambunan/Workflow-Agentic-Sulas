@@ -41,5 +41,5 @@
 	path = repos/tooling/kartographer-mcp
 	url = https://github.com/rotaigalp/kartographer-mcp.git
 [submodule "repos/skills"]
-	path = repos/tooling/skills
+	path = repos/staffinc/skills
 	url = https://github.com/sampingantech/skills.git

@@ -21,7 +21,7 @@ di mana salinannya, dan bagaimana worktree dipakai per task.
 | `sampingantech/utility-portal` | web portal PHP | INP | `develop` |
 | `sampingantech/utilityapp` | app PHP | INP | `develop` |
 | `rotaigalp/kartographer-mcp` | MCP index codebase INP | tooling | `main` |
-| `sampingantech/skills` | skill agent (termasuk `automation-worker`) | tooling | `main` |
+| `sampingantech/skills` | skill agent (termasuk `automation-worker`) | Staffinc | `main` |
 
 Semua private. Akses lewat `gh` (akun yang sudah login), bukan token di URL.
 
@@ -47,10 +47,10 @@ Semua repo di tabel di atas terpasang sebagai submodule di `repos/`, jadi satu c
 ```
 repos/
   staffinc/   staffinc-automation · hcmsvc · hcmworker · kerjaan-client-portal
-              kerjaan-android · ios-kerjaan · seamless-admin-portal · kerjaan-sdd
+              kerjaan-android · ios-kerjaan · seamless-admin-portal · kerjaan-sdd · skills
   inp/        internaltools-automation · utilitysvc · utility-portal · utilityapp
   shared/     staffinc-testcase      (ledger dipakai dua track)
-  tooling/    kartographer-mcp · skills
+  tooling/    kartographer-mcp
 ```
 
 Pemisahan ini mengikuti track: repo yang hanya dipakai track Staffinc di `staffinc/`, yang hanya

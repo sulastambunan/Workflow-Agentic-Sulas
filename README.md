@@ -30,10 +30,10 @@ Repo ini membawa semua repo yang dipakai automation sebagai submodule di `repos/
 dipisah per track:
 
 ```
-repos/staffinc/   automation · codebase Staffinc
+repos/staffinc/   automation · codebase Staffinc · skills
 repos/inp/        automation · codebase INP
 repos/shared/     staffinc-testcase (ledger dua track)
-repos/tooling/    kartographer-mcp · skills
+repos/tooling/    kartographer-mcp
 ```
 
 ```bash
