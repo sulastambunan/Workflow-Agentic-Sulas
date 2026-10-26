@@ -20,7 +20,7 @@ mengatur cara kerjanya:
 | Track | Ledger | Codebase (sumber perilaku) | Automation repo |
 |---|---|---|---|
 | **Staffinc** (PK / mobile / CP) | `sampingantech/staffinc-testcase` | `hcmsvc` (API) · `hcmworker` · `kerjaan-client-portal` (web) · `kerjaan-android` · `ios-kerjaan` | `staffinc-automation` |
-| **INP / internal tools** | `sampingantech/staffinc-testcase` (modul `performance-review`, dll) | `utilitysvc` (Python API) · `utility-portal` (PHP web) · `utilityapp` (PHP app) | `internaltools-automation` |
+| **INP / internal tools** | `sampingantech/staffinc-testcase` (modul `performance-review`, dll) | `utilitysvc` (Python API) · `utility-portal` (PHP web) · `utilityapp` (PHP app) · index `kartographer-mcp` | `internaltools-automation` |
 
 Perbedaan yang mempengaruhi perintah:
 

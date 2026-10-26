@@ -34,6 +34,10 @@ App benar → koreksi TC/ledger. TC benar → itu bug produk (test.fail + KNOWN 
 Modul automation INP ada di `internaltools-automation/domain/web/module/<module>/`
 (mis. `performance-review`). Project Playwright-nya `inp`, jadi run selalu memakai `--project=inp`.
 
+Navigasi cepat: kalau index Kartographer tersedia, pakai MCP-nya dulu (`docs/09-kartographer-mcp.md`) —
+`search_entries` untuk menemukan route, `get_request_rules` untuk aturan validasi, `tables_of` untuk
+tabel yang harus disiapkan. Baru buka file untuk hal yang tidak dijawab index.
+
 ## Yang dicari di codebase
 
 - **Route/halaman** — path yang harus dibuka, guard permission.
