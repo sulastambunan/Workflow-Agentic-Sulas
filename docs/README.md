@@ -18,6 +18,7 @@ Dokumen dibagi tiga: aturan yang berlaku di dua track, dan spesifikasi per track
 | `09-worktree.md` | kerja paralel per branch tanpa mengganggu clone utama |
 | `10-workspace-layout.md` | semua repo, submodule, dan layout folder |
 | `11-pre-push-review.md` | gate sebelum push: GWT + assertion + `@covers` + DDD |
+| `12-evidence-video.md` | lokasi + nama file video evidence (judul = skenario) + prompt |
 
 ## staffinc/ — khusus track Staffinc
 
