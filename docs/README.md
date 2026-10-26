@@ -17,6 +17,7 @@ Dokumen dibagi tiga: aturan yang berlaku di dua track, dan spesifikasi per track
 | `08-ci-gates.md` | gate PR dan perintah per track |
 | `09-worktree.md` | kerja paralel per branch tanpa mengganggu clone utama |
 | `10-workspace-layout.md` | semua repo, submodule, dan layout folder |
+| `11-pre-push-review.md` | gate sebelum push: GWT + assertion + `@covers` + DDD |
 
 ## staffinc/ — khusus track Staffinc
 

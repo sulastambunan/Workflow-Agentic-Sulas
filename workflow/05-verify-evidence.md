@@ -10,6 +10,8 @@
 3. Kalau butuh bukti visual: jalankan ulang dengan video aktif, beri nama file sesuai TC.
 4. Bandingkan mtime artifact dengan mtime file yang diedit — pastikan run memakai kode terbaru.
 5. Jalankan gate lokal: `python3 scripts/check_agent_rules.py --base <base>` (+ type-check repo).
+6. Jalankan pre-push review (`docs/shared/11-pre-push-review.md`): GWT sesuai TC, assertion sesuai
+   TC, `@covers` ada dan cocok, DDD, pitfall statis. `REQUEST_CHANGES` = jangan commit/push.
 
 ## Output
 
