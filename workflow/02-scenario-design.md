@@ -35,7 +35,7 @@ NOT MERGED: <pasangan yang sengaja dipisah + alasannya>
 ## Prompt
 
 ```text
-Lanjut fase 1: desain skenario untuk <TC ids> berdasarkan AC berikut: <paste AC>.
-Patuhi docs/02-test-design-rules.md. Jangan menulis kode; tunjukkan daftar skenario,
+Lanjut fase 2: desain skenario untuk <TC ids> berdasarkan AC berikut: <paste AC>.
+Patuhi docs/05-test-design-rules.md. Jangan menulis kode; tunjukkan daftar skenario,
 precondition per state, dan assertion per permukaan. Tunggu approval.
 ```

@@ -43,7 +43,7 @@ RISK: <state yang mengunci konfigurasi, dsb>
 ## Prompt
 
 ```text
-Lanjut fase 2: petakan skenario yang disetujui ke layer.
+Lanjut fase 3: petakan skenario yang disetujui ke layer.
 Tunjukkan daftar file (create/change), tanda tangan method, dan alur id antar stage.
 Jangan menulis implementasi dulu.
 ```

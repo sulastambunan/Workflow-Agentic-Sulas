@@ -1,59 +1,83 @@
-# AI Automation Workflow
+# Workflow Agentic — Automation Staffinc
 
-Agentic workflow untuk membangun test automation (API / Web / Mobile) dengan pola **DDD 3-Layer**:
-`SPEC → USECASE → COMPONENT/PAGE/SCREEN`, plus factory sebagai pembuat data (bukan layer).
+Cara kerja agent (AI) untuk automation kita yang sebenarnya: **tiga repo + satu ledger**,
+bukan sekadar aturan menulis test.
 
-Repo ini adalah **instruksi kerja untuk AI agent** (Claude Code, Codex, Cursor, Hermes, dll)
-yang dipakai berulang: dari membaca test case di ledger, mendesain skenario, menaruh kode di layer
-yang benar, menjalankan verifikasi nyata, sampai merapikan PR setelah review.
+```
+(1) staffinc-testcase                (2) codebase produk               (3) staffinc-automation
+    ledger TC, 1 file per TC             hcmsvc · hcmworker ·              spec · usecase · page/screen
+    frontmatter id, status, ref          kerjaan-client-portal ·           factory · @covers
+    testcases/<product>/<module>/        kerjaan-android · ios-kerjaan
+         │                                    │                                │
+         │ "apa yang harus dibuktikan"        │ "bagaimana app melakukannya"   │ "bagaimana kita membuktikan"
+         └──────────────────┬─────────────────┴────────────────────────────────┘
+                            ▼
+                   agent: intake → grounding → desain → implement → run → dual PR
+```
 
 ## Kenapa repo ini ada
 
-Agent sering gagal bukan karena tidak bisa menulis kode, tapi karena:
+Kegagalan yang paling mahal di automation kita bukan test merah, tapi **klaim yang tidak sinkron**:
 
-- menaruh logika di layer yang salah (assertion di usecase, HTTP call di spec),
-- mengarang hasil run ("sudah dites" padahal belum),
-- menutup PR tanpa bukti (video/artifact) dan tanpa memetakan temuan review,
-- mengulang precondition yang sama di setiap test sampai suite lambat dan rapuh.
+- ledger bilang `automated`, tapi spec-nya tidak ada atau sudah dihapus;
+- spec ada, tapi `@covers` menunjuk ID yang tidak ada di ledger;
+- TC bilang A, app berperilaku B, dan test ditulis supaya hijau untuk B tanpa keputusan siapa pun;
+- "sudah dites" tanpa run, tanpa video, tanpa artifact.
 
-Repo ini mengunci kebiasaan yang benar supaya hasilnya konsisten, bisa direview, dan bisa diaudit.
+Repo ini mengunci urutan kerja dan bukti yang membuat klaim itu tidak mungkin lolos.
 
 ## Isi
 
 | Path | Isi |
 |---|---|
-| `docs/00-working-agreement.md` | Aturan inti yang dibaca agent lebih dulu (layer, gate, definition of done) |
-| `docs/01-three-layer-architecture.md` | Batas tiap layer, naming, layout folder, anti-pattern |
-| `docs/02-test-design-rules.md` | Cara menurunkan skenario dari TC: POS/NEG, journey, precondition |
-| `docs/03-verification-and-evidence.md` | Run nyata, artifact, format laporan bukti |
-| `docs/04-pr-review-loop.md` | Loop setelah review: verifikasi temuan, commit per wave, mapping |
-| `docs/05-ci-gates.md` | Gate yang memblokir PR dan cara menjalankannya lokal |
-| `workflow/` | 6 fase kerja agent, masing-masing punya input, langkah, output, exit criteria |
-| `checklists/` | Checklist cetak untuk pre-implementasi, pre-PR, dan paket bukti |
-| `scripts/check_agent_rules.py` | Checker deterministik: `@covers`, `test.only`, stub assertion, secret |
-| `.github/workflows/quality-gate.yml` | CI yang menjalankan checker + type-check di setiap PR |
+| `docs/00-working-agreement.md` | Kontrak kerja: layer, definition of done, aturan operasi agent |
+| `docs/01-pipeline-overview.md` | **Tiga repo, siapa memiliki apa, urutan merge** |
+| `docs/02-ledger-contract.md` | Bentuk file TC, arti tiap `automationStatus`, kapan di-flip |
+| `docs/03-codebase-grounding.md` | Cara membaca codebase & app supaya selector tidak dikarang |
+| `docs/04-three-layer-architecture.md` | Batas SPEC / USECASE / PAGE-SCREEN / FACTORY + naming |
+| `docs/05-test-design-rules.md` | Menurunkan skenario: POS/NEG, journey, precondition per state |
+| `docs/06-verification-and-evidence.md` | Run nyata, artifact, format laporan bukti |
+| `docs/07-pr-and-review.md` | Dual PR, loop review, verifikasi temuan |
+| `docs/08-ci-gates.md` | Gate yang memblokir PR dan cara menjalankannya lokal |
+| `workflow/00-ledger-intake.md` | Fase 0 — baca TC dari ledger, cek spec yang sudah ada |
+| `workflow/01-grounding.md` | Fase 1 — telusuri codebase + app, cocokkan dengan TC |
+| `workflow/02-scenario-design.md` | Fase 2 — desain skenario, tunggu approval |
+| `workflow/03-layer-mapping.md` | Fase 3 — petakan ke file & layer |
+| `workflow/04-implement.md` | Fase 4 — tulis factory → layer 3 → usecase → spec |
+| `workflow/05-verify-evidence.md` | Fase 5 — run, bukti, gate lokal |
+| `workflow/06-dual-pr.md` | Fase 6 — PR automation + PR ledger + status flip |
+| `checklists/` | Pre-PR dan paket bukti |
+| `scripts/check_agent_rules.py` | Checker deterministik: `@covers`, `test.only`, stub, secret, non-ASCII |
+| `.github/workflows/quality-gate.yml` | CI: checker + type-check di setiap PR |
 
-## Cara pakai (5 menit)
+## Cara pakai
 
-1. Copy `docs/00-working-agreement.md` ke repo automation kamu dan rujuk dari `AGENTS.md` repo tersebut.
-2. Copy folder `docs/`, `workflow/`, `checklists/`, dan `scripts/check_agent_rules.py`.
-3. Copy `.github/workflows/quality-gate.yml` ke `.github/workflows/`.
-4. Sesuaikan perintah di workflow (`bun run test:api`, `npm run check-all`, dst) dengan repo kamu.
-5. Mulai task dengan prompt:
+1. Taruh repo ini di sebelah repo kerja kamu (atau baca langsung dari GitHub).
+2. Mulai task dengan prompt:
 
 ```text
-Baca AGENTS.md, lalu jalankan workflow/00-intake.md untuk TC <ID>.
-Berhenti setelah fase 2 dan tunjukkan rencana skenario sebelum menulis kode.
+Baca docs/00-working-agreement.md, docs/01-pipeline-overview.md, docs/02-ledger-contract.md.
+Jalankan workflow/00-ledger-intake.md untuk TC <ID>.
+Ledger: <path staffinc-testcase>, automation repo: <path staffinc-automation>.
+Berhenti setelah fase 0 dan tunjukkan outputnya.
 ```
+
+3. Lanjutkan fase demi fase: `01-grounding` → `02-scenario-design` → `03-layer-mapping` →
+   `04-implement` → `05-verify-evidence` → `06-dual-pr`.
+4. Copy `scripts/check_agent_rules.py` + workflow CI ke repo automation yang dipakai.
 
 ## Prinsip yang tidak boleh dilanggar
 
-1. **Satu tanggung jawab per layer.** Spec menyatakan kebenaran, usecase mengatur urutan, layer 3 menyentuh UI/HTTP.
-2. **Data bukan alur.** Beda data → varian factory. Beda langkah → method usecase.
-3. **Tidak ada klaim tanpa run.** "Sudah dites" hanya boleh diucapkan setelah perintah benar-benar dijalankan.
-4. **Bukti menyertai klaim.** Video/artifact dengan nama yang menyebut TC-nya.
-5. **Review itu loop, bukan sekali lihat.** Temuan diverifikasi ulang terhadap kode saat ini, bukan diingat.
+1. **Ledger dulu.** TC harus ada di `staffinc-testcase` sebelum spec ditulis. Tidak ada TC karangan.
+2. **Ground, don't guess.** Selector, copy, dan assertion berasal dari TC + codebase + UI nyata.
+3. **Reuse-first.** Cari step/usecase/page yang sudah ada sebelum membuat yang baru.
+4. **Satu tanggung jawab per layer.** Spec menyatakan kebenaran, usecase mengatur urutan, layer 3 menyentuh UI/HTTP, factory membuat data.
+5. **Status mengikuti bukti.** `automated` hanya setelah spec benar-benar jalan dan PR-nya merged.
+6. **Dual PR.** Automation + ledger, saling menunjuk; flip status baru setelah automation merged.
+7. **Tidak ada klaim tanpa run.** Bukti menyertai klaim, dan yang belum dijalankan disebut.
 
-## Lisensi
+## Sudah diuji
 
-Internal use. Bebas diadaptasi untuk repo automation masing-masing.
+`scripts/check_agent_rules.py` dites dengan dua fixture: spec bersih → PASS, spec bermasalah →
+FAIL dengan 6 temuan (`@covers` hilang, `test.only`, `console.log`, JWT hardcoded, assertion lemah,
+karakter non-ASCII).

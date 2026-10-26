@@ -1,7 +1,10 @@
 # 00 — Working agreement
 
 Dokumen ini adalah kontrak kerja untuk AI agent yang mengerjakan automation di repo ini.
-Baca `docs/01` sampai `docs/05` setelah ini, lalu ikuti fase yang relevan di `workflow/`.
+Baca `docs/01` sampai `docs/08` setelah ini, lalu ikuti fase yang relevan di `workflow/`.
+
+Tiga repo yang terlibat: ledger `staffinc-testcase` (sumber TC), codebase produk (sumber
+perilaku), dan `staffinc-automation` (tempat test ditulis). Lihat `docs/01-pipeline-overview.md`.
 
 ## Read order
 

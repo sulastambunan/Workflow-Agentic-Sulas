@@ -30,7 +30,7 @@ NOT RUN: <yang sengaja tidak dijalankan + alasan>
 ## Prompt
 
 ```text
-Lanjut fase 4: jalankan hanya spec yang berubah (<path>) dengan <flag yang benar>.
+Lanjut fase 5: jalankan hanya spec yang berubah (<path>) dengan <flag yang benar>.
 Sertakan perintah lengkap dan output aslinya. Kalau butuh video, aktifkan dan beri nama per TC.
 Jangan menyimpulkan hijau untuk apa pun yang tidak dijalankan.
 ```
