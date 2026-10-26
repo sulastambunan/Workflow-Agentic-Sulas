@@ -72,8 +72,9 @@ bilang sukses — itu hijau palsu.
 
 Track INP memakai repo automation yang berbeda, jadi root-nya menunjuk
 `internaltools-automation`. Repo automation yang belum dikenal ledger harus didaftarkan lebih dulu di
-`scripts/lib/agentic-utils.ts` (`automationRepoRoot()`) dan `scripts/cross-validate-automation.py`
-(dict `REPOS`) — tanpa itu validasi hard-fail `unknown automation repo`.
+`staffinc-testcase`: `scripts/lib/agentic-utils.ts` (`automationRepoRoot()`) dan
+`scripts/cross-validate-automation.py` (dict `REPOS`) — tanpa itu validasi hard-fail
+`unknown automation repo`.
 
 ## Path, bukan tebakan
 
