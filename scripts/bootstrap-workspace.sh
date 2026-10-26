@@ -20,12 +20,15 @@ MANIFEST=(
   "hcmsvc|sampingantech/hcmsvc|codebase"
   "hcmworker|sampingantech/hcmworker|codebase"
   "kerjaan-client-portal|sampingantech/kerjaan-client-portal|codebase"
+  "seamless-admin-portal|sampingantech/seamless-admin-portal|codebase"
+  "kerjaan-sdd|sampingantech/kerjaan-sdd|docs"
   "kerjaan-android|sampingantech/kerjaan-android|codebase"
   "ios-kerjaan|sampingantech/ios-kerjaan|codebase"
   "utilitysvc|sampingantech/utilitysvc|codebase"
   "utility-portal|sampingantech/utility-portal|codebase"
   "utilityapp|sampingantech/utilityapp|codebase"
   "kartographer-mcp|rotaigalp/kartographer-mcp|tooling"
+  "skills|sampingantech/skills|tooling"
 )
 
 find_repo() {

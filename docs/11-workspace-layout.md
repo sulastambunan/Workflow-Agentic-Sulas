@@ -13,21 +13,39 @@ di mana salinannya, dan bagaimana worktree dipakai per task.
 | `sampingantech/hcmsvc` | API Go | Staffinc | `develop` |
 | `sampingantech/hcmworker` | worker Go | Staffinc | `develop` |
 | `sampingantech/kerjaan-client-portal` | web portal (TypeScript) | Staffinc | `develop` |
+| `sampingantech/seamless-admin-portal` | admin portal Next.js | Staffinc | `develop` |
+| `sampingantech/kerjaan-sdd` | dokumen SDD produk (grounding alur) | Staffinc | `main` |
 | `sampingantech/kerjaan-android` | app Android (Kotlin) | Staffinc | `master` |
 | `sampingantech/ios-kerjaan` | app iOS (Swift) | Staffinc | `main` |
 | `sampingantech/utilitysvc` | API Python | INP | `develop` |
 | `sampingantech/utility-portal` | web portal PHP | INP | `develop` |
 | `sampingantech/utilityapp` | app PHP | INP | `develop` |
 | `rotaigalp/kartographer-mcp` | MCP index codebase INP | tooling | `main` |
+| `sampingantech/skills` | skill agent (termasuk `automation-worker`) | tooling | `main` |
 
 Semua private. Akses lewat `gh` (akun yang sudah login), bukan token di URL.
+
+### Menemukan repo baru
+
+Daftar di atas bukan tebakan — ambil dari org langsung:
+
+```bash
+gh repo list sampingantech --limit 200 \
+  --json name,description,primaryLanguage,updatedAt \
+  --jq '.[] | "\(.name)\t\(.primaryLanguage.name // "-")\t\(.description // "")"'
+```
+
+Repo yang relevan untuk automation biasanya jatuh ke salah satu peran di tabel: ledger, automation,
+codebase track Staffinc, codebase track INP, atau tooling. Kalau ragu apakah sebuah repo dipakai,
+cek dulu apakah `automationRef` di ledger menunjuk ke sana sebelum menambahkannya ke workspace.
 
 ## Layout yang dipakai
 
 ```
 ~/Documents/
   AUTOMATION-WORKER <...>/     staffinc-automation · staffinc-testcase · hcmsvc · hcmworker
-                               kerjaan-client-portal · kerjaan-android · ios-kerjaan · skills
+                               kerjaan-client-portal · kerjaan-android · ios-kerjaan
+                               seamless-admin-portal · kerjaan-sdd · skills
   AUTOMATION-INP - commercial/ internaltools-automation · staffinc-testcase · utilitysvc
                                utility-portal · utilityapp
   DATA TESTING/INP - MCP/      kartographer-mcp
