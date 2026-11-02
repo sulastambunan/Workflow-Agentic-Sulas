@@ -1,4 +1,4 @@
-# Workflow Agentic — Automation Staffinc
+# Workflow Agentic — Automation Staffinc - FIX BANGET
 
 Panduan kerja agent untuk automation: **TC → grounding → spec DDD → run → review → push**.
 Bukan kumpulan aturan umum — ini alur yang benar-benar dipakai di repo automation kita.
