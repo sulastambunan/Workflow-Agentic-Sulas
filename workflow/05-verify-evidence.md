@@ -12,8 +12,13 @@
    rename jadi `<TC-ID> - <Judul Skenario>.mp4`. Detail: `docs/shared/12-evidence-video.md`.
 4. Bandingkan mtime artifact dengan mtime file yang diedit — pastikan run memakai kode terbaru.
 5. Jalankan gate lokal: `python3 scripts/check_agent_rules.py --base <base>` (+ type-check repo).
-6. Jalankan pre-push review (`docs/shared/11-pre-push-review.md`): GWT sesuai TC, assertion sesuai
-   TC, `@covers` ada dan cocok, DDD, pitfall statis. `REQUEST_CHANGES` = jangan commit/push.
+6. Khusus Staffinc, baca `skills/automation-pr-review/SKILL.md` dan setiap `references/` yang
+   disebut langkahnya; jalankan self-review terhadap diff lokal (staged, unstaged, commit branch)
+   sesuai adaptasi `docs/shared/11-pre-push-review.md`. Pin SHA/base dan sumber TC, buat assumption
+   ledger, tabel klausa Given/When/Then/And per `@covers`, audit vacuous pass, DDD, env/data/time,
+   jalankan gate dan verifikasi setiap temuan besar sendiri. Laporkan verdict serta yang belum
+   dieksekusi di channel review PR ini. INP memakai pre-push review track INP, bukan skill Staffinc.
+   Blocker/`REQUEST_CHANGES` = perbaiki dan review ulang sebelum commit/push.
 
 ## Output
 

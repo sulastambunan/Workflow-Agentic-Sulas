@@ -3,7 +3,34 @@
 Gate terakhir sebelum branch keluar dari mesin. Bedanya dengan review PR: ini membaca **diff lokal**
 (staged, unstaged, dan commit di branch), bukan PR yang sudah dibuka.
 
-Skill agent-nya: `staffinc-automation-pre-push-review` (profil `automation-worker`).
+Untuk Staffinc, sumber review semantik: `skills/automation-pr-review/SKILL.md` beserta ketiga
+`references/`-nya (salinan utuh skill lead). Skill aslinya untuk **PR orang lain**, bukan self-check;
+gunakan pemeriksaan semantiknya untuk diff lokal dengan adaptasi eksplisit di bawah. Skill
+`staffinc-automation-pre-push-review` (profil `automation-worker`) boleh jadi pelengkap, bukan
+pengganti. Untuk INP, pertahankan gate track INP; jangan mengklaim skill Staffinc berlaku di sana.
+
+## Adaptasi self-review sebelum push (Staffinc)
+
+- Target bukan nomor/head PR: pin `HEAD`, base yang benar (termasuk stacked branch), dan diff
+  `base...HEAD` **ditambah staged, unstaged, untracked**. Jangan checkout/reset shared tree.
+- Jalankan intake/assumption ledger, inventaris spec/usecase/page/fixture, per-`@covers` clause
+  table, scan red flags/vacuous pass/env/time/data, gates, verifikasi temuan, dan laporan sesuai
+  `SKILL.md` langkah 0–8. `references/intake-and-assumptions.md`, `review-checks.md`, dan
+  `report-and-posting.md` wajib dibaca ketika langkahnya tiba. Tandai klaim PR, paired PR, dan
+  CI PR sebagai belum ada, bukan sebagai sudah diperiksa. Langkah 9 (posting) tidak berlaku.
+- Gunakan TC `staffinc-testcase` main yang bersih dan mutakhir (atau head paired testcase PR
+  untuk TC baru). Bila TC tidak tersedia, jangan klaim coverage terverifikasi; berhenti dan
+  minta keputusan bila review semantik terblokir. Pastikan tiap Given/When sesuai dan tiap Then/And
+  outcome punya assertion yang benar-benar bisa gagal saat fitur rusak.
+- `scripts/pre-push-review.sh <base>` memeriksa diff lokal secara deterministik; jalankan juga
+  `python3 scripts/check_agent_rules.py --base <base>` dan type-check repo. Jangan substitusi
+  `pr_guard.py` PR pada head lokal yang belum mencakup file staged/unstaged.
+- Verdict adaptasi: `PASS` = tak ada blocker dan semua klausul ter-assert; `CONDITIONAL` = tidak
+  ada blocker tetapi ada prasyarat yang diputus manusia; `REQUEST_CHANGES` = ada blocker, **jangan
+  push**. Major tetap harus dibereskan atau diputus manusia, bukan disembunyikan di PASS.
+- Lampirkan SHA/base, sumber TC, basis run (run fase 5 vs review code-only), findings `file:line`,
+  coverage, gate, asumsi, dan yang belum diverifikasi. Setelah perbaikan, ulang review atas diff
+  terbaru. Channel percakapan ini untuk review PR; jangan post GitHub tanpa permintaan eksplisit.
 
 ## Urutan wewenang
 

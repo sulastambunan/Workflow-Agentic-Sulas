@@ -43,6 +43,8 @@ FACTORY is not a layer. It may be imported by SPEC (fixtures) and by USECASE
 - [ ] The relevant test was actually executed; verdict quoted from real output
 - [ ] Evidence exists if the human asked for it (video/artifact named after the TC)
 - [ ] `scripts/check_agent_rules.py` passes on the changed files
+- [ ] Staffinc: self-review diff lokal dengan skill review lead selesai sebelum push; setelah
+      PR dibuat, review ulang head PR dan laporkan terpisah sebelum meminta review lead
 
 If an item cannot be satisfied, say so explicitly and name the blocker. Never fill the gap
 with a plausible-sounding result.
@@ -56,7 +58,7 @@ with a plausible-sounding result.
 4. **Never fabricate output.** No invented results, file contents, or IDs.
 5. **Respect shared working trees.** Never `git checkout`/`reset --hard` to undo someone else's
    work. Read other branches from git objects (`git show`, `git archive`).
-6. **Push only when asked.** Never merge a PR without an approving review.
+6. **Push only when asked.** Never merge a PR; keputusan merge dan approving review milik manusia.
 7. **Code English, chat human.**
 
 ## Forbidden patterns (auto-rejected in review)

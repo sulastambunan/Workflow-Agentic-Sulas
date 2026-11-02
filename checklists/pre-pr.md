@@ -29,6 +29,11 @@
 - [ ] Tidak ada probe atau file sementara ikut ter-stage
 
 ## Gate
+- [ ] Staffinc: self-review diff lokal dengan `skills/automation-pr-review/SKILL.md` dan
+      adaptasi `docs/shared/11-pre-push-review.md`; head/base, sumber TC, coverage per klausa,
+      asumsi, temuan, dan gate tercatat; tidak ada blocker sebelum push
+- [ ] Staffinc: setelah PR automation dibuka, review head PR lagi sebelum handoff ke lead;
+      temuan/verdict dilaporkan di channel review PR (GitHub hanya bila diminta)
 - [ ] `python3 scripts/check_agent_rules.py --base origin/develop` → clean
 - [ ] Type-check repo dijalankan (`npm run check-all` / `bun run type-check`)
 - [ ] Spec yang berubah benar-benar dijalankan; hasilnya dikutip di PR
