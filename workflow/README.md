@@ -10,8 +10,8 @@ Tujuh fase, satu TC pada satu waktu. Fase 0–6 berlaku untuk dua track; perbeda
 | 2 | `02-scenario-design.md` | skenario + traceability TC → checkpoint |
 | 3 | `03-layer-mapping.md` | peta SPEC/USECASE/PAGE-SCREEN/FACTORY |
 | 4 | `04-implement.md` | kode spec |
-| 5 | `05-verify-evidence.md` | run `passed` + video/artefak |
-| 6 | `06-dual-pr.md` | dua PR + `automationRef` |
+| 5 | `05-verify-evidence.md` | run `passed` + video/artefak, lalu self-review sebelum push |
+| 6 | `06-dual-pr.md` | dua PR + `automationRef`; review head PR sebelum handoff |
 
 Aturan yang tidak berubah antar-track:
 
@@ -19,3 +19,6 @@ Aturan yang tidak berubah antar-track:
 - Rencana dikonfirmasi user sebelum implementasi.
 - Hanya run `passed` yang boleh menaikkan status TC.
 - PR automation dan PR ledger dibuka berpasangan.
+- Khusus Staffinc: self-review diff lokal sebelum push dan review head PR setelah dibuka
+  mengikuti `skills/automation-pr-review/SKILL.md` dengan batasan `docs/shared/11-pre-push-review.md`.
+  INP tetap memakai pre-push gate track INP; skill ini tidak berlaku untuk `internaltools-automation`.

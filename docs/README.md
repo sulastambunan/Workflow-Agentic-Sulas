@@ -20,6 +20,9 @@ Dokumen dibagi tiga: aturan yang berlaku di dua track, dan spesifikasi per track
 | `11-pre-push-review.md` | gate sebelum push: GWT + assertion + `@covers` + DDD |
 | `12-evidence-video.md` | lokasi + nama file video evidence (judul = skenario) + prompt |
 
+Skill review Staffinc dari lead disimpan utuh di `../skills/automation-pr-review/` (SKILL.md dan
+references). Adaptasi self-review sebelum push ada di `shared/11-pre-push-review.md`.
+
 ## staffinc/ — khusus track Staffinc
 
 | Dokumen | Isi |

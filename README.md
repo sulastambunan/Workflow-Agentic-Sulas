@@ -37,8 +37,9 @@ repos/tooling/           kartographer-mcp
 3 mapping     tentukan SPEC / USECASE / PAGE-SCREEN / FACTORY
 4 implement   tulis kode sesuai layer
 5 verify      run spesifik → passed + video
-6 review      pre-push review (GWT, assertion, @covers, DDD)
-7 push        dua PR: spec + automationRef
+6 self-review pre-push: skill automation-pr-review, adaptasi diff lokal
+7 push        hanya jika review lolos; dua PR: spec + automationRef
+8 PR review   setelah PR dibuka: skill yang sama pada head PR, laporkan di channel review PR
 ```
 
 Detail per fase: `workflow/00`–`06`.
@@ -51,7 +52,10 @@ Detail per fase: `workflow/00`–`06`.
 4. **`@covers` ada dan cocok.** Satu test = satu TC yang benar-benar dieksekusi.
 5. **Tidak ada `page.` di spec.** Spec memanggil usecase; layer 3 hanya lewat usecase.
 6. **Hanya `passed` yang jadi `automated`.** Tanpa run lulus, TC tetap `planned`.
-7. **Review sebelum push.** `REQUEST_CHANGES` = jangan push.
+7. **Self-review sebelum push.** Jalankan `skills/automation-pr-review/SKILL.md`
+   dengan adaptasi diff lokal di `docs/shared/11-pre-push-review.md`; `REQUEST_CHANGES`/blocker = jangan push.
+8. **Review PR setelah dibuka.** Review head PR sesuai skill; laporan di channel review PR ini,
+   bukan komentar GitHub kecuali diminta. Self-review tidak menggantikan review lead.
 
 ## Dokumen
 
@@ -62,6 +66,7 @@ Detail per fase: `workflow/00`–`06`.
 | `docs/inp/` | versi INP + `kartographer-mcp` |
 | `workflow/` | tujuh fase kerja |
 | `checklists/` | pre-PR dan paket bukti |
+| `skills/automation-pr-review/` | skill review PR Staffinc dari lead, termasuk `references/` (salinan utuh) |
 | `scripts/` | checker, pre-push gate, bootstrap workspace |
 
 Index lengkap: `docs/README.md`.

@@ -18,10 +18,13 @@ Automation-PR: <org>/<repo>#<n>
 ## Urutan yang benar
 
 ```
+0. self-review sebelum push selesai tanpa blocker (fase 5); jika belum, jangan push
 1. push branch automation → buka PR
-2. review + merge PR automation ke default branch
-3. baru buka/merge PR ledger yang menaikkan status
-4. CI ledger regenerate report web
+2. review head PR sendiri dengan `skills/automation-pr-review/SKILL.md` (Staffinc), laporkan di
+   channel review PR ini; jika ada blocker, perbaiki lalu re-review head baru
+3. review lead + merge PR automation ke default branch (keputusan manusia, agent tidak merge)
+4. baru buka/merge PR ledger yang menaikkan status
+5. CI ledger regenerate report web
 ```
 
 Kalau status dinaikkan sebelum PR automation merged, check `automation-merged` gagal
@@ -53,10 +56,13 @@ Kalau status dinaikkan sebelum PR automation merged, check `automation-merged` g
 
 ## Review loop
 
-1. Baca review TERBARU; catat `commit_id` yang dinilai.
+0. Self-review PR independen terlebih dahulu, sebelum membaca review sebelumnya (agar tidak
+   ter-anchoring); bedakan dari self-review diff lokal sebelum push.
+1. Setelah verifikasi temuan sendiri, baca review TERBARU; catat `commit_id` yang dinilai.
 2. Verifikasi setiap temuan terhadap kode saat ini, satu perintah per temuan.
 3. Perbaiki per wave; commit message memetakan temuan → fix.
-4. Komentar PR: mapping + bukti, pisahkan VERIFIED vs PENDING.
+4. Jika diminta komentar GitHub: mapping + bukti, pisahkan VERIFIED vs PENDING; default hanya
+   laporan di channel review PR ini.
 5. Jangan merge PR orang lain; tunggu approving review.
 
 Detail: `docs/shared/07-pr-and-review.md`.

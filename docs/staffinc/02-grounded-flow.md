@@ -79,10 +79,15 @@ $PY $CKB selector <testid>                     # pastikan sitasi benar-benar res
 `--module` membuat hitungan error tidak sebanding (hanya TC modul itu yang dimuat) — jangan dipakai
 untuk menilai hasil akhir.
 
-## 9. COMMIT + PUSH — dua repo
+## 9. SELF-REVIEW, COMMIT + PUSH — dua repo
 
-Branch `automation-worker/<module>-<slug>`, commit di repo automation, set `automationRef` di repo
+Sebelum commit/push, jalankan self-review Staffinc pada diff lokal sesuai
+`docs/shared/11-pre-push-review.md` dan `skills/automation-pr-review/SKILL.md`.
+`REQUEST_CHANGES` berarti perbaiki dan ulang review, bukan push. Branch
+`automation-worker/<module>-<slug>`, commit di repo automation, set `automationRef` di repo
 testcase (4 field: `repo`, `path`, `command`, `branch`), push keduanya, buka **dua** PR.
+Setelah PR automation terbuka, review ulang **head PR** dengan skill yang sama sebelum handoff
+ke lead. Laporan di channel review PR; jangan komentar GitHub kecuali diminta.
 
 ## 10. REPORT
 

@@ -3,6 +3,14 @@
 The review is a loop, not a checkbox. An automated reviewer re-reviews every push and quotes the
 commit hash it judged.
 
+Untuk PR Staffinc, setelah self-review diff lokal dan PR dibuat, jalankan review independen
+terhadap head PR memakai `skills/automation-pr-review/SKILL.md` (baca references sesuai langkah),
+laporkan verdict/ledger/coverage/temuan/gate di channel review PR ini. Default code-only; jangan
+posting GitHub tanpa diminta. Baca review lama **setelah** temuan sendiri diverifikasi (langkah 7
+skill), lalu bandingkan dan lakukan langkah di bawah. Setiap push berikutnya memicu re-review;
+self-review bukan approval lead dan tidak memberi hak merge. Untuk INP gunakan gate track INP,
+bukan skill khusus `staffinc-automation`.
+
 ## 1. Read the newest review, not the one you remember
 
 ```bash
