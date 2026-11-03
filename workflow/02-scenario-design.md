@@ -4,7 +4,10 @@
 
 ## Steps
 
-1. Pecah AC menjadi skenario POS / NEG. Tidak ada tipe EDGE — boundary ditulis NEG.
+1. Pecah AC menjadi skenario POS / NEG sesuai behavior dan schema ledger. TSD boleh
+   berkategori EDGE, tetapi ledger tidak punya tipe `edge`: boundary ditolak → NEG
+   (`negative`); boundary diterima → POS (`functional`). Lihat
+   [QA authoring gates](../docs/shared/13-qa-authoring-skills.md).
 2. Satu aturan = satu test. Jangan gabungkan beberapa validasi dalam satu blok assertion.
 3. Kelompokkan precondition berdasarkan STATE, bukan data:
    `login` → `record exists` → `record + participant` → `record started`.

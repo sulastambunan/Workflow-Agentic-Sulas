@@ -12,6 +12,17 @@ Bukan kumpulan aturan umum — ini alur yang benar-benar dipakai di repo automat
 
 Ledger TC-nya satu untuk dua track: `staffinc-testcase`.
 
+## Dari PRD atau TSD
+
+Skill QA perusahaan tersedia di submodule `repos/staffinc/skills`:
+- **`tsd-writer`**: PRD → TSD, review/update TSD, test plan.
+- **`testcase-writer`**: TSD/skenario disetujui → canonical TC + precondition.
+
+Mulai dari [QA authoring gates](docs/shared/13-qa-authoring-skills.md), lalu kembali
+ke intake di bawah setelah TC tersedia. Untuk TC yang sudah ada, langsung intake;
+tidak perlu membuat TSD baru. Jalankan `git submodule update --init repos/staffinc/skills`
+agar versi skill sesuai gitlink yang direview.
+
 ## Cara mulai
 
 ```bash

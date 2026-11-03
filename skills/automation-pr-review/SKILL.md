@@ -24,6 +24,13 @@ not by whether it is green.
 
 ## Prerequisites
 
+For a paired TSD/testcase change, also read
+`repos/staffinc/skills/testcase-writer/SKILL.md` (reconciliation, preconditions,
+CI/automation mapping) and `docs/shared/13-qa-authoring-skills.md`. For TSD source
+quality, route to `repos/staffinc/skills/tsd-writer/SKILL.md`. These supplement the
+review oracle; they do not authorize rewriting a canonical testcase to make a test
+pass, skipping review gates, or treating a manual checklist as executed CI.
+
 Check these at intake. A missing source never silently drops a step: record it in the assumption
 ledger and the report's Gates section, and keep the findings it would have proved as "reported, not
 verified" or `assumed`.
