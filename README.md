@@ -78,9 +78,16 @@ Detail per fase: `workflow/00`–`06`.
 | `workflow/` | tujuh fase kerja |
 | `checklists/` | pre-PR dan paket bukti |
 | `skills/automation-pr-review/` | skill review PR Staffinc dari lead, termasuk `references/` (salinan utuh) |
-| `scripts/` | checker, pre-push gate, bootstrap workspace |
+| `scripts/` | checker, pre-push gate, bootstrap workspace, detektor drift submodule |
 
 Index lengkap: `docs/README.md`.
+
+## Pantau update repo pendukung
+
+`python3 scripts/monitor_submodules.py --all` mengecek HEAD default branch seluruh submodule
+terhadap SHA yang di-pin Agentic. Panduan bot dan draft PR otomatis (tetap perlu review manusia):
+[`docs/shared/14-upstream-monitor.md`](docs/shared/14-upstream-monitor.md). Bot baru perlu token
+Telegram dari BotFather dan profil Hermes sendiri; tanpa itu monitoring terjadwal belum aktif.
 
 ## Perintah penting
 
