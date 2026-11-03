@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workflow Agentic - Upstream Prevention & Detailed Diagnostics</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: white;
+            padding: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #1a73e8;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            border-bottom: 3px solid #1a73e8;
+            padding-bottom: 15px;
+        }
+
+        h2 {
+            color: #1a73e8;
+            font-size: 2em;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            page-break-after: avoid;
+        }
+
+        h3 {
+            color: #34a853;
+            font-size: 1.3em;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        h4 {
+            color: #666;
+            font-size: 1.1em;
+            margin-top: 15px;
+            margin-bottom: 8px;
+        }
+
+        p {
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+
+        .metadata {
+            background: #f0f4f8;
+            padding: 15px;
+            border-left: 4px solid #1a73e8;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+        }
+
+        .metadata strong {
+            color: #1a73e8;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            page-break-inside: avoid;
+        }
+
+        table th {
+            background: #1a73e8;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        pre {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            border-left: 4px solid #34a853;
+            page-break-inside: avoid;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            page-break-inside: avoid;
+        }
+
+        .checklist {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        .checklist li {
+            margin-bottom: 8px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .checklist li:before {
+            content: "☑";
+            position: absolute;
+            left: 0;
+            color: #34a853;
+            font-weight: bold;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+            border-radius: 3px;
+        }
+
+        .success {
+            background: #d4edda;
+            padding: 15px;
+            border-left: 4px solid #28a745;
+            margin: 15px 0;
+            border-radius: 3px;
+        }
+
+        .error {
+            background: #f8d7da;
+            padding: 15px;
+            border-left: 4px solid #dc3545;
+            margin: 15px 0;
+            border-radius: 3px;
+        }
+
+        .flow {
+            background: #e7f3ff;
+            padding: 15px;
+            border-left: 4px solid #0066cc;
+            margin: 15px 0;
+            border-radius: 3px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+
+        .toc {
+            background: #f0f4f8;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 40px;
+        }
+
+        .toc h3 {
+            color: #1a73e8;
+            margin-top: 0;
+        }
+
+        .toc ul {
+            list-style-position: inside;
+            padding-left: 20px;
+        }
+
+        .toc li {
+            margin-bottom: 8px;
+        }
+
+        .toc a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+
+        .page-break {
+            page-break-after: always;
+            margin-bottom: 40px;
+        }
+
+        .icon-success {
+            color: #28a745;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .icon-warning {
+            color: #ffc107;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .icon-error {
+            color: #dc3545;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #666;
+            font-size: 0.9em;
+            text-align: center;
+        }
+
+        @media print {
+            body {
+                padding: 20px;
+            }
+            h1, h2, h3 {
+                page-break-after: avoid;
+            }
+            .toc {
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>📚 Workflow Agentic - Upstream Prevention & Detailed Diagnostics</h1>
+
+<div class="metadata">
+    <strong>Repository:</strong> github.com/sulastambunan/Workflow-Agentic-Sulas<br>
+    <strong>PR:</strong> #5 (docs/upstream-prevention-diagnostics)<br>
+    <strong>Date:</strong> 2026-01-15<br>
+    <strong>Status:</strong> Ready for Review & Merge
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+    <h3>📑 Daftar Isi</h3>
+    <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#files">Files Created</a></li>
+        <li><a href="#principles">Core Principles</a></li>
+        <li><a href="#integration">Integration & Flow</a></li>
+        <li><a href="#checklist">Checklist Implementation</a></li>
+        <li><a href="#workflow-phases">Workflow Phases</a></li>
+        <li><a href="#updates">Updates to Existing Files</a></li>
+        <li><a href="#next-steps">Next Steps</a></li>
+    </ul>
+</div>
+
+<!-- OVERVIEW -->
+<div class="section" id="overview">
+<h2>🎯 Overview</h2>
+
+<p>Dokumentasi baru ini fokus pada <strong>upstream prevention</strong> (prevent bugs saat grounding/design) dan <strong>detailed diagnostics</strong> (jelas bagaimana handle kalau test fail).</p>
+
+<h3>Problem yang Diselesaikan</h3>
+<ul>
+    <li><span class="icon-error">❌</span> Tautology hanya detect di PR review → <span class="icon-success">✅</span> NOW prevent di grounding</li>
+    <li><span class="icon-error">❌</span> Swallowed errors hanya detect di PR review → <span class="icon-success">✅</span> NOW prevent di implementation</li>
+    <li><span class="icon-error">❌</span> Hardcoded values hanya detect di PR review → <span class="icon-success">✅</span> NOW prevent di design</li>
+    <li><span class="icon-error">❌</span> Test failure unclear saat runtime → <span class="icon-success">✅</span> NOW detailed diagnosis framework</li>
+    <li><span class="icon-error">❌</span> Automation tidak traceable ke TC → <span class="icon-success">✅</span> NOW centralized verification checklist</li>
+    <li><span class="icon-error">❌</span> Environment issues surprise saat verify → <span class="icon-success">✅</span> NOW ask Phase 0</li>
+</ul>
+</div>
+
+<div class="page-break"></div>
+
+<!-- FILES CREATED -->
+<div class="section" id="files">
+<h2>📁 Files Created (7)</h2>
+
+<h3>1. 14-executability-principle.md</h3>
+<p><strong>Rule:</strong> EVERYTHING must be executable in dev/stg</p>
+<ul>
+    <li>Covers all layers (SPEC, USECASE, Layer3, FACTORY, PRE)</li>
+    <li>Environment parity requirements</li>
+    <li>Checklists per phase (grounding, design, implement, verify)</li>
+    <li>Anti-patterns & what NOT to do</li>
+</ul>
+
+<h3>2. 15-test-failure-reporting.md ✅ CREATED</h3>
+<p><strong>Standard failure report format with decision tree</strong></p>
+<ul>
+    <li>5 failure types (PRE, FACTORY, USECASE, Layer3, SPEC)</li>
+    <li>Root cause analysis per type</li>
+    <li>Evidence requirements (screenshot, video, logs, stack trace)</li>
+    <li>Decision tree: "What to do when test fails?"</li>
+</ul>
+
+<h3>3. 16-assertion-design.md</h3>
+<p><strong>Prevent tautology, swallowed errors, hardcoded values</strong></p>
+<ul>
+    <li>Rule 1: Every assertion must be able to FAIL</li>
+    <li>Rule 2: Every error must PROPAGATE</li>
+    <li>Rule 3: Every value from TC (not code)</li>
+    <li>Error handling patterns per layer</li>
+    <li>Assertion design template BEFORE implementation</li>
+</ul>
+
+<h3>4. 17-traceability-record.md</h3>
+<p><strong>Centralized TC verification</strong></p>
+<ul>
+    <li>AUTOMATION-CHECKLIST-&lt;TC-ID&gt;.md template</li>
+    <li>Given/When/Then mapping</li>
+    <li>Red flag prevention checklist</li>
+    <li>Self-review before push</li>
+</ul>
+
+<h3>5. INTEGRATION-MAP.md</h3>
+<p><strong>How new docs integrate with existing workflow</strong></p>
+<ul>
+    <li>3-layer review system: static code → executability → runtime</li>
+    <li>Integration with skill automation-pr-review</li>
+    <li>Where to add executability checks in skill</li>
+</ul>
+
+<h3>6. README-NEW-DOCUMENTATION.md</h3>
+<p><strong>Master README summarizing all changes</strong></p>
+<ul>
+    <li>Overview & core principles</li>
+    <li>Implementation plan</li>
+    <li>Reading order for different roles</li>
+    <li>Expected outcomes</li>
+</ul>
+
+<h3>7. UPDATES-TO-EXISTING-FILES.md</h3>
+<p><strong>Manual merge guide for 5 existing files</strong></p>
+<ul>
+    <li>Detailed what/where/how for each update</li>
+    <li>Cross-reference strategy</li>
+    <li>How to apply changes</li>
+</ul>
+</div>
+
+<div class="page-break"></div>
+
+<!-- CORE PRINCIPLES -->
+<div class="section" id="principles">
+<h2>💡 Core Principles</h2>
+
+<h3>Principle 1: Executability (doc 14)</h3>
+<div class="highlight">
+<strong>NOT:</strong> "Assume code will work"<br>
+<strong>BUT:</strong> "Verify everything works in REAL environment"<br><br>
+Every assertion, endpoint, selector, value, precondition<br>
+must be VERIFIED IN REAL ENVIRONMENT before code.
+</div>
+
+<h3>Principle 2: Assertion Quality (doc 16)</h3>
+<div class="success">
+<strong>Rule 1:</strong> Every assertion must be able to FAIL<br>
+✅ expect(status).toBe('DRAFT')<br>
+❌ expect(true).toBe(true)<br><br>
+
+<strong>Rule 2:</strong> Every error must PROPAGATE<br>
+✅ throw new Error(`Failed: ${msg}`)<br>
+❌ .catch(() => false)<br><br>
+
+<strong>Rule 3:</strong> Every value from TC (not code)<br>
+✅ From TC Then clause<br>
+❌ From code assumption
+</div>
+
+<h3>Principle 3: Detailed Failure Diagnosis (doc 15)</h3>
+<div class="flow">When test FAILS at runtime:
+  1. Identify LAYER (PRE, FACTORY, USECASE, Layer3, SPEC)
+  2. Root cause analysis
+  3. Evidence (screenshot, video, logs, stack trace)
+  4. Decision tree (fix code? re-ground? escalate?)
+
+NOT: "Test failed"
+BUT: "SPEC assertion fail at line 26..."
+</div>
+
+<h3>Principle 4: Centralized Traceability (doc 17)</h3>
+<div class="success">
+<strong>NOT:</strong> Comments scattered in code<br>
+<strong>BUT:</strong> AUTOMATION-CHECKLIST-&lt;TC-ID&gt;.md<br>
+<br>
+✅ Explicit: TC clause → assertion mapping<br>
+✅ Self-reviewed: engineer verify match<br>
+✅ Centralized: one place to see full coverage<br>
+✅ Plus: Code comments as backup
+</div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- INTEGRATION & FLOW -->
+<div class="section" id="integration">
+<h2>🔗 Integration & Flow</h2>
+
+<h3>3-Layer Review System</h3>
+
+<table>
+    <tr>
+        <th>Layer</th>
+        <th>When</th>
+        <th>What</th>
+        <th>Tool</th>
+    </tr>
+    <tr>
+        <td><strong>Layer 1:</strong> Static Code</td>
+        <td>PR opened</td>
+        <td>Clause table, red flags, pitfalls, gates, DDD</td>
+        <td>skill automation-pr-review (existing)</td>
+    </tr>
+    <tr>
+        <td><strong>Layer 2:</strong> Executability</td>
+        <td>Grounding + Code</td>
+        <td>All layers executable? Selector exist? Endpoint respond?</td>
+        <td>doc 14-executability-principle (NEW)</td>
+    </tr>
+    <tr>
+        <td><strong>Layer 3:</strong> Runtime Diagnosis</td>
+        <td>Test fails</td>
+        <td>Which layer? Root cause? Evidence? Action?</td>
+        <td>doc 15-test-failure-reporting (NEW)</td>
+    </tr>
+</table>
+
+<h3>Workflow Integration</h3>
+
+<pre><code>Phase 0: INTAKE
+  └─ workflow/00-ledger-intake.md + Step 6
+     (ask environment, test data, account)
+
+Phase 1: GROUNDING
+  └─ doc 14-executability-principle.md
+     (selector, endpoint, value ground)
+
+Phase 2: DESIGN
+  └─ doc 16-assertion-design.md
+     (design assertion template, error handling)
+
+Phase 3: MAPPING
+  └─ DDD per layer, Layer3 mapping
+
+Phase 4: IMPLEMENT
+  └─ doc 14, 16 checklist
+  └─ doc 17 AUTOMATION-CHECKLIST
+  └─ workflow/04-implement.md + Implementation Output
+
+Phase 5: VERIFY
+  └─ Run test
+  └─ IF fail: doc 15-test-failure-reporting.md
+  └─ workflow/05-verify-evidence.md + Failure Diagnosis
+
+Phase 6: PRE-PUSH
+  └─ doc 17 Traceability Check
+  └─ docs/shared/11-pre-push-review.md + verification
+
+PR REVIEW (lead)
+  └─ skill automation-pr-review (updated)
+  └─ doc 14 executability findings
+  └─ doc 15 failure diagnosis (IF tests ran + failed)</code></pre>
+</div>
+
+<div class="page-break"></div>
+
+<!-- CHECKLIST IMPLEMENTATION -->
+<div class="section" id="checklist">
+<h2>✅ Checklist Implementation</h2>
+
+<h3>Phase 0: INTAKE</h3>
+<p><strong>Add to:</strong> workflow/00-ledger-intake.md → Step 6</p>
+<ul class="checklist">
+    <li>Target environment (dev/stg/both)?</li>
+    <li>Test account (role, email, credential source)?</li>
+    <li>Test data (available, setup method)?</li>
+    <li>Environment config (endpoint URL, feature flag, auth)?</li>
+    <li>Data cleanup (delete/keep, unique per run)?</li>
+</ul>
+
+<h3>Phase 4: IMPLEMENT</h3>
+<p><strong>Add to:</strong> workflow/04-implement.md → Implementation Output</p>
+<ul class="checklist">
+    <li>AUTOMATION-CHECKLIST-&lt;TC-ID&gt;.md created</li>
+    <li>Code comments added (@covers, // src:, // expect:)</li>
+    <li>Test PASSED (not skipped, not failed)</li>
+    <li>PRE executed successfully</li>
+    <li>Evidence collected (video, logs)</li>
+</ul>
+
+<h3>Phase 6: PRE-PUSH</h3>
+<p><strong>Add to:</strong> docs/shared/11-pre-push-review.md → Traceability Verification</p>
+<ul class="checklist">
+    <li>AUTOMATION-CHECKLIST-&lt;TC-ID&gt;.md exist?</li>
+    <li>All TC clauses covered (Given/When/Then/And)?</li>
+    <li>Clause table complete (no missing assertions)?</li>
+    <li>Red flags scanned (tautology, swallowed error, hardcoded)?</li>
+    <li>Code comments present (@covers, // expect:, // src:)?</li>
+    <li>Test result: PASSED (not skipped, not failed)?</li>
+</ul>
+
+<h3>PR REVIEW: Executability Check</h3>
+<p><strong>Add to:</strong> skills/automation-pr-review/SKILL.md → Section 5.1 (after "5. Code checks")</p>
+<ul class="checklist">
+    <li>SPEC: Expected value from TC? Tautology? Can fail?</li>
+    <li>USECASE: Calls real endpoint? Error propagates?</li>
+    <li>Layer 3: Selector grounded (// src:)? Not hardcoded?</li>
+    <li>FACTORY: Data varied? No API call? Schema valid?</li>
+    <li>PRE: Endpoint verified? Response validated?</li>
+</ul>
+
+<h3>PR REVIEW: Failure Diagnosis (if tests executed)</h3>
+<p><strong>Add to:</strong> skills/automation-pr-review/SKILL.md → Section 6.1 (after "6. Gates")</p>
+<ul class="checklist">
+    <li>If test failed: Layer identified?</li>
+    <li>Root cause analysis done?</li>
+    <li>Evidence collected (screenshot, video, logs)?</li>
+    <li>Decision clear (fix code? re-ground? escalate?)?</li>
+</ul>
+</div>
+
+<div class="page-break"></div>
+
+<!-- WORKFLOW PHASES -->
+<div class="section" id="workflow-phases">
+<h2>📊 Workflow Phases: Before vs After</h2>
+
+<h3>BEFORE (Downstream Detection)</h3>
+<pre><code>Code Written
+  ↓
+Test Run
+  ↓
+PR Review (FIRST TIME detect: tautology, swallowed error, hardcoded)
+  ↓ REQUEST_CHANGES: Rework needed
+Fix Needed
+  ↓
+Re-test
+  ↓
+EXPENSIVE CYCLE
+</code></pre>
+
+<h3>AFTER (Upstream Prevention + Detailed Diagnosis)</h3>
+<pre><code>Phase 0: INTAKE
+  └─ Ask: environment, test data, account
+
+Phase 1: GROUNDING
+  └─ Verify: selector exist, endpoint respond, value accessible
+
+Phase 2: DESIGN
+  └─ Design: assertion template, error handling plan
+
+Phase 3: MAPPING
+  └─ Map: Layer responsibility
+
+Phase 4: IMPLEMENT
+  └─ Prevent: tautology, swallowed error, hardcoded
+  └─ Create: AUTOMATION-CHECKLIST-&lt;TC-ID&gt;.md
+
+Phase 5: VERIFY
+  └─ Run: test PASSED
+  └─ IF fail: detailed diagnosis (layer, root cause, decision)
+
+Phase 6: PRE-PUSH
+  └─ Verify: traceability checklist
+
+PR REVIEW
+  └─ Confirm: quality at source, rarely find new issue
+
+RESULT: Quality upstream, clear diagnosis if fail
+</code></pre>
+
+<h3>Comparison</h3>
+
+<table>
+    <tr>
+        <th>Aspect</th>
+        <th>Before</th>
+        <th>After</th>
+    </tr>
+    <tr>
+        <td>Executability</td>
+        <td>Assumed</td>
+        <td>Verified per phase</td>
+    </tr>
+    <tr>
+        <td>Assertion Design</td>
+        <td>Trial and error</td>
+        <td>Template before code</td>
+    </tr>
+    <tr>
+        <td>Error Handling</td>
+        <td>Surprise at runtime</td>
+        <td>Planned per layer</td>
+    </tr>
+    <tr>
+        <td>Failure Diagnosis</td>
+        <td>Vague error message</td>
+        <td>Structured report</td>
+    </tr>
+    <tr>
+        <td>TC Traceability</td>
+        <td>Scattered in code</td>
+        <td>Centralized checklist</td>
+    </tr>
+    <tr>
+        <td>Environment Setup</td>
+        <td>Ask Phase 5</td>
+        <td>Ask Phase 0 intake</td>
+    </tr>
+    <tr>
+        <td>Red Flag Detection</td>
+        <td>PR review</td>
+        <td>Upstream prevention</td>
+    </tr>
+</table>
+</div>
+
+<div class="page-break"></div>
+
+<!-- UPDATES TO EXISTING FILES -->
+<div class="section" id="updates">
+<h2>⚠️ Updates to Existing Files (Manual Merge Needed)</h2>
+
+<p><strong>5 files need updates after PR merge:</strong></p>
+
+<h3>1. workflow/00-ledger-intake.md</h3>
+<p><strong>Add:</strong> Step 6 — Environment & Data Setup questionnaire</p>
+<p><strong>After:</strong> Current Step 5, before "Output" section</p>
+<p><strong>Benefit:</strong> Prevent environment surprises in Phase 5</p>
+
+<h3>2. workflow/04-implement.md</h3>
+<p><strong>Add:</strong> Implementation Output section (at end)</p>
+<p><strong>Content:</strong> AUTOMATION-CHECKLIST creation, code comments, test output</p>
+<p><strong>Benefit:</strong> Ensure upstream prevention, not downstream detection</p>
+
+<h3>3. workflow/05-verify-evidence.md</h3>
+<p><strong>Add:</strong> Failure Diagnosis section (after "Reporting a result")</p>
+<p><strong>Content:</strong> Identify layer, root cause, evidence, decision tree</p>
+<p><strong>Benefit:</strong> Clear failure diagnosis, not vague error messages</p>
+
+<h3>4. docs/shared/11-pre-push-review.md</h3>
+<p><strong>Add:</strong> Traceability Verification checklist</p>
+<p><strong>Content:</strong> Verify AUTOMATION-CHECKLIST exist, clauses covered, red flags scanned</p>
+<p><strong>Benefit:</strong> Ensure traceability before PR</p>
+
+<h3>5. skills/automation-pr-review/SKILL.md</h3>
+<p><strong>Add Three Sections:</strong></p>
+<ul>
+    <li><strong>5.1 Executability validation</strong> (code-only check)</li>
+    <li><strong>6.1 When tests executed</strong> (PRE/USECASE/Layer3/FACTORY checks)</li>
+    <li><strong>Update Section 8</strong> (add executability & failure findings to report)</li>
+</ul>
+<p><strong>Benefit:</strong> Skill aligned with new executability principle & failure diagnosis</p>
+
+<p class="highlight"><strong>See:</strong> UPDATES-TO-EXISTING-FILES.md (in PR) for detailed merge guide with exact locations and content</p>
+</div>
+
+<div class="page-break"></div>
+
+<!-- NEXT STEPS -->
+<div class="section" id="next-steps">
+<h2>🚀 Next Steps</h2>
+
+<h3>Immediate (After PR Created)</h3>
+<ol>
+    <li><strong>Review PR #5:</strong> github.com/sulastambunan/Workflow-Agentic-Sulas/pull/5</li>
+    <li><strong>Read README-NEW-DOCUMENTATION.md:</strong> In PR, overview of all changes</li>
+    <li><strong>Check INTEGRATION-MAP.md:</strong> How everything connects</li>
+</ol>
+
+<h3>After PR Merge</h3>
+<ol>
+    <li><strong>Update 5 existing files</strong> (per UPDATES-TO-EXISTING-FILES.md)</li>
+    <li><strong>Test cross-references:</strong> All links work correctly</li>
+    <li><strong>Train team:</strong> Use new docs in actual automation work</li>
+</ol>
+
+<h3>For Automation Engineers</h3>
+<ol>
+    <li>Read: 14-executability-principle.md (what's executable)</li>
+    <li>Read: 16-assertion-design.md (design before code)</li>
+    <li>Read: 17-traceability-record.md (create AUTOMATION-CHECKLIST)</li>
+    <li>Reference: 15-test-failure-reporting.md (IF test fails)</li>
+</ol>
+
+<h3>For QA Lead/Reviewer</h3>
+<ol>
+    <li>Read: INTEGRATION-MAP.md (3-layer review system)</li>
+    <li>Read: skill automation-pr-review updates (executability + failure sections)</li>
+    <li>Reference: 14-executability-principle.md (what to look for)</li>
+    <li>Reference: 15-test-failure-reporting.md (failure diagnosis)</li>
+</ol>
+
+<h3>For Team Onboarding</h3>
+<ol>
+    <li>Start: README-NEW-DOCUMENTATION.md (master overview)</li>
+    <li>Then: Core principles (14, 16, 17, 15)</li>
+    <li>Practice: Create AUTOMATION-CHECKLIST per TC</li>
+    <li>Verify: Self-review checklist before push</li>
+</ol>
+
+<h3>Success Metrics (Expected Outcomes)</h3>
+<div class="success">
+✅ <strong>Upstream prevention:</strong> Tautology prevented in grounding/design<br>
+✅ <strong>Detailed diagnostics:</strong> Test failure clear (layer identified, root cause known)<br>
+✅ <strong>Centralized verification:</strong> AUTOMATION-CHECKLIST per TC<br>
+✅ <strong>Faster cycle:</strong> Less rework, faster debugging<br>
+✅ <strong>Confident deployment:</strong> Traceable to TC, quality gates passed
+</div>
+</div>
+
+<div class="footer">
+    <p>📚 <strong>Workflow Agentic Documentation</strong> | PR #5 | 2026-01-15</p>
+    <p>Repository: github.com/sulastambunan/Workflow-Agentic-Sulas</p>
+    <p>Generated with Claude Code | 🤖 Ready to print as PDF</p>
+</div>
+
+</body>
+</html>
