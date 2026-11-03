@@ -2,6 +2,11 @@
 
 **Goal:** memastikan TC yang akan dikerjakan benar-benar ada dan dipahami apa adanya.
 
+Jika input masih PRD/TSD dan canonical TC belum ada, ikuti
+[QA authoring gates](../docs/shared/13-qa-authoring-skills.md): `tsd-writer` lalu
+`testcase-writer` sesuai kebutuhan. Kembali ke fase ini setelah file TC tersedia;
+jangan mengarang ledger ID atau langsung menulis automation dari TSD.
+
 ## Inputs
 
 - **Pointer ke TC** di `staffinc-testcase`: link file, path relatif, atau TC ID (+ module)
