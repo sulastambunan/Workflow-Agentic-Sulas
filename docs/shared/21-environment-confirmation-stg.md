@@ -201,8 +201,10 @@ Test: @covers DF-M1-POS-001 — Create employee with valid data
 - [x] Then#2: id exists
 - [x] And#1: createdBy = current user
 
-### Evidence
-- Video: outputs/evidence/2026-01-20/DF-M1-POS-001-stg.webm
+### Evidence (See doc 23-evidence-collection-standards)
+- Video (COMPLETE): outputs/evidence/2026-01-20/DF-M1-POS-001-complete.webm
+  - From: PRE execution → Steps → Final result
+  - Not: Partial or cut segments
 - Screenshot: outputs/evidence/2026-01-20/success.png
 - Logs: outputs/logs/2026-01-20/DF-M1-POS-001-stg.log
 
