@@ -707,7 +707,9 @@ FACTORY
 4. Run test + collect evidence
    - Test status: PASSED (not skipped/failed)
    - PRE executed: YES
-   - Video: recorded (optional)
+   - Video: COMPLETE from PRE → Steps → Result (see doc 23-evidence-collection-standards)
+   - Screenshot: Final state
+   - Logs: Full output
 ```
 
 **Output:** Code files + AUTOMATION-CHECKLIST
