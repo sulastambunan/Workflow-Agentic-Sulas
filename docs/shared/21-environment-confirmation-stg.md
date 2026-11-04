@@ -172,6 +172,8 @@ npm test -- create-employee.spec.ts --project=chromium
 # If FAILED:
 # - Capture error + screenshot
 # - Check: Is it test code issue or stg environment issue?
+# - Follow doc 22-automation-fixing-best-practices.md for systematic diagnosis
+#   (Distinguish: local code bug vs environment parity vs product defect)
 # - Investigate root cause
 # - Fix and re-run
 

@@ -79,6 +79,8 @@ Finding #4: PRECONDITION NOT EXECUTED
 
 ## Step 2: Categorize Issues by Layer
 
+**⚠️ If Runtime Failures Occur While Fixing:** Refer to `22-automation-fixing-best-practices.md` for systematic diagnosis and fixing approach (trace codebase, distinguish causes, verify fixes).
+
 **Group findings by DDD layer:**
 
 ### **FACTORY Issues** (Data generation)

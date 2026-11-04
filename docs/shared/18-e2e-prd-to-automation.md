@@ -714,10 +714,12 @@ FACTORY
 
 ---
 
-### Phase 5: Verify
+### Phase 5: Verify & Fixing
 
 **Input:** Code + AUTOMATION-CHECKLIST  
 **Output:** Evidence + test result
+
+⚠️ **If Test Fails:** See `22-automation-fixing-best-practices.md` for systematic diagnosis and fixing approach.
 
 #### Steps:
 
